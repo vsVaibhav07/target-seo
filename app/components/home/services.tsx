@@ -22,18 +22,9 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="relative py-28 bg-light overflow-hidden">
+    <section className="relative  py-28 bg-light overflow-hidden">
       {/* Single blob background */}
-      <motion.div
-        className=" cloud opacity-5 absolute top-40 left-4 rotate-350 w-1/3  z-0"
-        animate={{
-          x: [0, 2, 0],
-          y: [0, 1, 0],
-          rotate: [0, 2, -3, 0],
-          scale: [1, 1.05, 1]
-        }}
-        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-      />
+      
 
       <motion.div
         initial={{ opacity: 0 }}

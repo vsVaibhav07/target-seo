@@ -7,8 +7,8 @@ import { ArrowRight } from 'lucide-react'
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden py-24 lg:py-32 ">
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+    <section className="relative overflow-hidden py-16  ">
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -21,9 +21,8 @@ export default function Hero() {
           </h1>
           <hr />
 
-          <p className="text-lg text-muted mb-10 max-w-xl">
-            ROI-driven SEO strategies for local and national businesses.
-            No fluff. Just measurable results.
+          <p className="text-lg text-justify text-muted mb-10 max-w-xl">
+            ROI-driven SEO strategies for local and national businesses. No fluff. Just results.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-8">

@@ -14,13 +14,13 @@ const items = [
 export default function WhyUs() {
   return (
     <section className="py-24">
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto flex flex-col-reverse px-6  lg:flex-row gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="relative w-full h-[300px] md:h-[420px] flex justify-center items-center  rounded-3xl overflow-hidden shadow-xl bg-slate-100"
+          className="relative w-full md:max-w-[50%]  h-[300px] md:h-[420px] flex justify-center items-center  rounded-3xl overflow-hidden shadow-xl bg-slate-100"
         >
           <Image
             src="/whyUs.png"
@@ -38,7 +38,7 @@ export default function WhyUs() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-10">
+          <h2 className="text-3xl md:text-4xl text-center font-extrabold mb-10">
             Why Target SEO Solutions
           </h2>
 

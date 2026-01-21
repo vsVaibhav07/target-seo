@@ -34,12 +34,13 @@ export default function BlogPreview() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
+            
           >
             <p className="text-accent font-semibold mb-4">Insights & Knowledge</p>
             <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">
-              Latest SEO Blogs &<br /> Growth Insights
+              Latest SEO Blogs & Growth Insights
             </h2>
-            <p className="mt-6 text-muted max-w-xl">
+            <p className="mt-6 text-muted ">
               Actionable SEO strategies, case studies and growth experiments
               curated by our experts.
             </p>

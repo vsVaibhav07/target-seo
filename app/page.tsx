@@ -20,8 +20,8 @@ return (
 <CaseStudies />
 <Industries />
 <Testimonials />
-<PrimaryCTA />
-<BlogPreview />
+<PrimaryCTA /> 
+ <BlogPreview />
 </main>
 )
 }
