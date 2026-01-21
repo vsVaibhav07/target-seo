@@ -7,7 +7,7 @@ import { ArrowRight } from 'lucide-react'
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden py-24 lg:py-32 bg-gradient-to-br from-light to-white">
+    <section className="relative overflow-hidden py-24 lg:py-32 bg-gradient-to-br from-white via-violet-800  to-black">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

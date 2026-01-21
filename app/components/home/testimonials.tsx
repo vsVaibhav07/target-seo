@@ -10,7 +10,7 @@ import 'swiper/css/navigation'
 export default function Testimonials() {
   return (
     <section className="py-20 md:py-16 bg-gradient-to-b from-white to-slate-50">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -23,36 +23,60 @@ export default function Testimonials() {
 
         <Swiper
           modules={[Autoplay, Pagination, Navigation]}
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+          }}
           loop
           speed={900}
           pagination={{ clickable: true }}
           navigation
-          className="pb-12"
+          spaceBetween={30}
+          slidesPerView={1}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+          }}
+          className="pb-14"
         >
-          {[1, 2, 3].map(i => (
-            <SwiperSlide key={i}>
+          {[1, 2, 3, 4, 5].map(i => (
+            <SwiperSlide key={i} className="h-full">
               <motion.div
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.9, ease: 'easeOut' }}
-                className="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl p-8 md:p-12 text-center"
+                className="h-full bg-white rounded-2xl shadow-xl p-8 md:p-10 text-center flex flex-col justify-between"
               >
-                <div className="flex justify-center mb-5">
-                  <div className="h-18 w-18 md:h-20 md:w-20 rounded-full bg-slate-200 border-4 border-white shadow-md" />
+                {/* Avatar */}
+                <div className="flex justify-center mb-6">
+                  <div className="h-20 w-20 rounded-full bg-slate-200 border-4 border-white shadow-md" />
                 </div>
 
-                <p className="text-lg md:text-xl text-slate-600 mb-5 leading-relaxed">
+                {/* Testimonial */}
+                <p className="text-base md:text-lg text-slate-600 leading-relaxed mb-6">
                   Target SEO Solutions helped us achieve consistent lead growth
                   and top rankings. Their strategy and execution exceeded our
                   expectations.
                 </p>
 
-                <p className="font-semibold text-lg">John D</p>
-                <p className="text-sm text-slate-500 mb-2">Business Owner</p>
-
-                <div className="text-accent text-lg tracking-wide">★★★★★</div>
+                {/* Client Info */}
+                <div>
+                  <p className="font-semibold text-lg">John D</p>
+                  <p className="text-sm text-slate-500 mb-2">
+                    Business Owner
+                  </p>
+                  <div className="text-accent text-lg tracking-wide">
+                    ★★★★★
+                  </div>
+                </div>
               </motion.div>
             </SwiperSlide>
           ))}
