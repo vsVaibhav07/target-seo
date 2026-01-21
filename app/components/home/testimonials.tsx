@@ -65,13 +65,13 @@ export default function Testimonials() {
 
         {/* Custom Navigation Buttons */}
         <div className="hidden md:flex absolute inset-y-0 -left-4 items-center z-20">
-          <button className="testimonial-prev group h-12 w-12 rounded-full bg-white shadow-xl flex items-center justify-center hover:bg-blue-600 transition-all duration-300 border border-slate-100">
+          <button className="testimonial-prev group h-12 w-12 rounded-full bg-white shadow-xl flex items-center justify-center hover:bg-orange-500/70 cursor-pointer transition-all duration-300 border border-slate-100">
             <ChevronLeft size={24} className="text-slate-700 group-hover:text-white" />
           </button>
         </div>
 
         <div className="hidden md:flex absolute inset-y-0 -right-4 items-center z-20">
-          <button className="testimonial-next group h-12 w-12 rounded-full bg-white shadow-xl flex items-center justify-center hover:bg-blue-600 transition-all duration-300 border border-slate-100">
+          <button className="testimonial-next group hover:bg-orange-500/70 cursor-pointer h-12 w-12 rounded-full bg-white shadow-xl flex items-center justify-center transition-all duration-300 border border-slate-100">
             <ChevronRight size={24} className="text-slate-700 group-hover:text-white" />
           </button>
         </div>
