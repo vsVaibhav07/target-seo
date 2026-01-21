@@ -7,18 +7,19 @@ import { ArrowRight } from 'lucide-react'
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden py-24 lg:py-32 bg-gradient-to-br from-white via-violet-800  to-black">
+    <section className="relative overflow-hidden py-24 lg:py-32 ">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl md:text-5xl xl:text-6xl font-extrabold leading-tight mb-6">
+          <h1 className="text-3xl font-extrabold leading-tight mb-6">
             We Help Businesses Rank Higher,
-            <br className="hidden sm:block" />
+            <br className="" />
             Get More Leads & Grow Revenue
           </h1>
+          <hr />
 
           <p className="text-lg text-muted mb-10 max-w-xl">
             ROI-driven SEO strategies for local and national businesses.
