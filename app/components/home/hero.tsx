@@ -2,46 +2,47 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion,Variants } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
 export default function Hero() {
   const line1 = "We Help Businesses Rank Higher,"
   const line2 = "Get More Leads & Grow Revenue"
 
-  // Word Animation Variants
-  const containerVariants:Variants = {
+  // Word Animation Variants - Reduced initial Y to prevent huge Layout Shifts
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: 0.2 }
+      transition: { staggerChildren: 0.05, delayChildren: 0.1 } // Faster stagger
     }
   }
 
-  const wordVariants:Variants = {
+  const wordVariants: Variants = {
     hidden: { 
       opacity: 0, 
-      y: 20,
-      rotateX: 40 
+      y: 10, // Reduced from 20 to minimize CLS
+      rotateX: 10 
     },
     visible: {
       opacity: 1,
       y: 0,
       rotateX: 0,
       transition: { 
-        duration: 0.6, 
+        duration: 0.4, // Faster duration
         ease: [0.215, 0.61, 0.355, 1] 
       }
     }
   }
 
-  const itemVariants:Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
   }
 
   return (
-    <section className="relative overflow-hidden py-16 lg:py-0 lg:min-h-screen flex items-center">
+    // Problem Fix: Added min-height directly to avoid layout jump
+    <section className="relative overflow-hidden py-16 lg:py-0 min-h-[600px] lg:min-h-screen flex items-center bg-white">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center w-full">
         
         <motion.div
@@ -49,8 +50,8 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
-          {/* Heading with Word-by-Word Animation */}
-          <h1 className="text-4xl font-black leading-tight mb-6 text-slate-900 perspective-1000">
+          {/* Heading - Optimization: Added min-height to text container */}
+          <h1 className="text-4xl font-black leading-tight mb-6 text-slate-900 perspective-1000 min-h-[120px]">
             <div className="flex flex-wrap gap-x-[0.2em] overflow-hidden">
               {line1.split(" ").map((word, i) => (
                 <motion.span key={i} variants={wordVariants} className="inline-block origin-bottom">
@@ -82,7 +83,7 @@ export default function Hero() {
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 mb-8">
             <Link
               href="/free-audit"
-              className="inline-flex items-center justify-center gap-2 bg-accent text-white px-7 py-4 rounded-xl font-bold shadow-lg shadow-accent/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+              className="inline-flex items-center justify-center gap-2 bg-accent text-white px-7 py-4 rounded-xl font-bold shadow-lg shadow-accent/20 hover:scale-[1.02] active:scale-[0.98] transition-transform"
             >
               Get Free SEO Audit
               <ArrowRight size={18} />
@@ -90,7 +91,7 @@ export default function Hero() {
 
             <Link
               href="/case-studies"
-              className="inline-flex items-center justify-center px-7 py-4 rounded-xl border border-slate-300 font-semibold text-slate-700 hover:bg-slate-50 active:scale-[0.98] transition-all"
+              className="inline-flex items-center justify-center px-7 py-4 rounded-xl border border-slate-300 font-semibold text-slate-700 hover:bg-slate-50 active:scale-[0.98] transition-transform"
             >
               View Case Studies
             </Link>
@@ -101,37 +102,27 @@ export default function Hero() {
           </motion.p>
         </motion.div>
 
-        {/* Right Side Image with Float and Scale Entrance */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-          className="relative"
-        >
+        {/* Right Side Image - LCP FIX */}
+        <div className="relative min-h-[300px] flex items-center justify-center">
           <motion.div
-            animate={{ 
-              y: [0, -15, 0],
-            }}
-            transition={{ 
-              duration: 5, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="w-full"
           >
             <Image
               src="/heroImage.svg"
               alt="SEO growth illustration"
               width={640}
               height={540}
-              priority
-              className="mx-auto drop-shadow-2xl"
+              priority={true} // Priority loading
+              loading="eager" // Force eager load
+              fetchPriority="high" // Tell browser this is top priority
+              className="mx-auto drop-shadow-2xl w-auto h-auto"
             />
           </motion.div>
-          
-          {/* Subtle Background Glow */}
           <div className="absolute inset-0 bg-accent/5 blur-[100px] rounded-full -z-10" />
-        </motion.div>
-
+        </div>
       </div>
 
       <style jsx global>{`

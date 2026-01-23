@@ -1,7 +1,12 @@
 import './globals.css'
+import dynamic from 'next/dynamic'
 import Header from './components/common/header'
 import Footer from './components/common/footer'
-import SmoothScroll from './components/common/smoothScroll'
+import ScrollProvider from './components/common/scrollProvider'
+
+// OPTIMIZATION: Dynamic import for SmoothScroll (Lenis + GSAP)
+// Isse JS bundle split ho jayega aur initial page load fast hoga.
+
 
 export const metadata = {
   title: 'Target SEO Solutions – ROI Driven SEO Agency',
@@ -11,12 +16,13 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-[#020617] text-slate-100 overflow-x-hidden">
-        <SmoothScroll>
+      <body className="bg-[#020617] text-slate-100 overflow-x-hidden antialiased">
+        
+        <ScrollProvider >
           <Header />
-          {children}
+          <main>{children}</main>
           <Footer />
-        </SmoothScroll>
+        </ScrollProvider>
       </body>
     </html>
   )
