@@ -26,10 +26,10 @@ export default function Industries() {
         <m.div style={{ x }} className="flex w-[200vw] h-full items-center">
           
           <div className="flex h-full w-screen flex-shrink-0 flex-col items-center justify-center bg-slate-50">
-            <h2 className="flex flex-col lg:flex-row items-center gap-4 text-7xl md:text-9xl font-bold text-slate-900">
+            <h2 className="flex flex-col lg:flex-row font-[family-name:var(--font-dancing)] items-center gap-4 text-7xl md:text-9xl font-bold text-slate-900">
               <span>Industries</span>
               <span>We</span>
-              <span className="text-orange-500 font-[family-name:var(--font-dancing)]">Serve</span>
+              <span className="text-orange-500 ">Serve</span>
             </h2>
             <p className="mt-8 text-slate-400 uppercase tracking-widest text-sm">Scroll to explore</p>
           </div>
