@@ -1,6 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform, Variants } from 'framer-motion'
 import { 
   Scale, 
   Stethoscope, 
@@ -8,7 +9,13 @@ import {
   ShoppingCart, 
   Layers 
 } from 'lucide-react'
+import { Dancing_Script } from 'next/font/google'
 
+const dancingScript = Dancing_Script({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  display: 'swap'
+})
 
 const industries = [
   { name: 'Law Firms', icon: Scale },
@@ -18,46 +25,119 @@ const industries = [
   { name: 'B2B & SaaS', icon: Layers }
 ]
 
+const titleWords = ['Industries', 'We', 'Serve']
+
 export default function Industries() {
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end end']
+  })
+
+  // Horizontal Movement: 0% to -50%
+  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-50%'])
+
+  // Animation Variants
+  const titleVariants: Variants = {
+    hidden: { y: "100%", opacity: 0 },
+    visible: (i: number) => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.8,
+        ease: [0.33, 1, 0.68, 1] as const,
+      }
+    })
+  }
+
   return (
-    <section className="pb-28 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-extrabold text-center mb-16 text-slate-900"
-        >
-          Industries We Serve
-        </motion.h2>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
-          {industries.map((industry) => {
-            const Icon = industry.icon 
-            
-            return (
-              <motion.div
-                key={industry.name}
-                whileHover={{ 
-                  y: -8,
-                  backgroundColor: "#ffffff",
-                  boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)"
-                }}
-                className="group flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white/50 py-8 px-4 font-semibold shadow-sm transition-all duration-300"
-              >
-                {/* Icon Container */}
-                <div className="mb-4 p-3 rounded-full bg-blue-50 text-slate-700 group-hover:bg-orange-400 group-hover:text-white transition-colors duration-300">
-                  <Icon size={32} strokeWidth={1.5} />
+    <section ref={sectionRef} className="relative h-[300vh] bg-white overflow-clip">
+      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+        
+        <motion.div style={{ x }} className="flex w-[200vw] h-full items-center">
+          
+          {/* --- Screen 1: Animated Heading (Light Theme) --- */}
+          <div className="flex h-full w-screen flex-shrink-0 flex-col items-center justify-center px-4 bg-slate-50">
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-2 md:gap-8">
+              {titleWords.map((word, i) => (
+                <div key={i} className="overflow-visible py-2">
+                  <motion.span
+                    custom={i}
+                    variants={titleVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.1 }}
+                    className={`${dancingScript.className} block whitespace-nowrap text-7xl sm:text-8xl md:text-9xl font-bold leading-tight ${word === 'Serve' ? 'text-orange-500' : 'text-slate-900'}`}
+                  >
+                    {word}
+                  </motion.span>
                 </div>
+              ))}
+            </div>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="mt-10 text-slate-400 text-sm font-medium uppercase tracking-widest"
+            >
+              Scroll to explore
+            </motion.div>
+          </div>
 
-                {/* Label */}
-                <span className="text-slate-700 group-hover:text-orange-400 transition-colors">
-                  {industry.name}
-                </span>
-              </motion.div>
-            )
-          })}
-        </div>
+          {/* --- Screen 2: Compact Industry Cards --- */}
+          <div className="flex h-full w-screen flex-shrink-0 items-center justify-center px-6 md:px-20 bg-white">
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6 w-full max-w-7xl">
+              {industries.map((industry, i) => {
+                const Icon = industry.icon
+                return (
+                  <motion.div
+                    key={industry.name}
+                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                    whileHover="hover"
+                    transition={{ delay: i * 0.05 }}
+                    viewport={{ once: false }}
+                    className="group relative flex flex-col items-center justify-center aspect-square rounded-[2rem] bg-white border border-slate-100 p-6 shadow-sm overflow-hidden"
+                  >
+                    {/* Hover Background Expansion */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-br from-orange-400 to-orange-600"
+                      initial={{ clipPath: 'circle(0% at 50% 50%)' }}
+                      variants={{
+                        hover: { clipPath: 'circle(150% at 50% 50%)' }
+                      }}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                    />
+
+                    {/* Rotating Icon Container */}
+                    <motion.div 
+                      variants={{
+                        hover: { rotate: 360, scale: 1.1 }
+                      }}
+                      transition={{ type: "spring", stiffness: 150, damping: 15 }}
+                      className="relative z-10 mb-3 p-4 rounded-2xl bg-orange-50 text-orange-600 group-hover:bg-white/20 group-hover:text-white transition-all duration-300 shadow-inner"
+                    >
+                      <Icon size={28} strokeWidth={1.5} />
+                    </motion.div>
+
+                    {/* Industry Label */}
+                    <motion.span 
+                      className="relative z-10 text-center font-bold text-slate-700 group-hover:text-white transition-colors text-xs md:text-sm"
+                    >
+                      {industry.name}
+                    </motion.span>
+
+                    {/* Subtle bottom accent line */}
+                    <div className="absolute bottom-3 w-4 h-0.5 bg-orange-500/20 rounded-full group-hover:bg-white group-hover:w-8 transition-all duration-500" />
+                  </motion.div>
+                )
+              })}
+            </div>
+          </div>
+          
+        </motion.div>
       </div>
     </section>
   )

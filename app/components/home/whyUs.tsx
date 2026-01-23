@@ -1,13 +1,13 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, Variants } from 'framer-motion'
 import { TrendingUp, Search, Brain, PhoneCall } from 'lucide-react'
 import { useRef, useState, useEffect } from 'react'
 import { Dancing_Script } from 'next/font/google'
 
 const dancingScript = Dancing_Script({
   subsets: ['latin'],
-  weight: ['600', '700'],
+  weight: ['400', '700'], // Fixed weight
   display: 'swap'
 })
 
@@ -18,7 +18,8 @@ const items = [
   { title: 'Dedicated SEO Manager', icon: PhoneCall }
 ]
 
-const title = 'Why Target SEO Solutions'
+// Fixed: Title ko array mein rakha taaki .map chal sake
+const titleWords = ['Why', 'Target', 'SEO', 'Solutions']
 
 export default function WhyUs() {
   const sectionRef = useRef<HTMLDivElement | null>(null)
@@ -40,8 +41,21 @@ export default function WhyUs() {
     offset: ['start start', 'end end']
   })
 
-  // Horizontal transition: Move from 0% to -50% (exactly two screens)
   const x = useTransform(scrollYProgress, [0, 1], ['0%', '-50%'])
+
+  // Added: missing titleVariants with strict typing
+  const titleVariants: Variants = {
+    hidden: { y: "100%", opacity: 0 },
+    visible: (i: number) => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.8,
+        ease: [0.33, 1, 0.68, 1] as const,
+      }
+    })
+  }
 
   return (
     <section
@@ -69,32 +83,31 @@ export default function WhyUs() {
         <motion.div style={{ x }} className="flex h-full w-[200vw]">
           
           {/* --- Screen 1: Heading Animation --- */}
-          <div className="flex h-full w-[100vw] items-center justify-center px-6">
-            <motion.h2
-              className={`${dancingScript.className} flex flex-wrap justify-center gap-x-3 text-center text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white whitespace-nowrap`}
-            >
-              {title.split(' ').map((word, wordIndex) => (
-                <span key={wordIndex} className="inline-block">
-                  {word.split('').map((char, charIndex) => (
-                    <motion.span
-                      key={charIndex}
-                      initial={{ opacity: 0, y: 30, rotateX: -90 }}
-                      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                      transition={{
-                        duration: 0.6,
-                        delay: (wordIndex * 5 + charIndex) * 0.03,
-                        ease: [0.215, 0.61, 0.355, 1],
-                      }}
-                      className="inline-block"
-                    >
-                      {char}
-                    </motion.span>
-                  ))}
-                  {/* Space between words */}
-                  <span className="inline-block">&nbsp;</span>
-                </span>
+          <div className="flex h-full w-screen flex-shrink-0 flex-col items-center justify-center px-4">
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-2 md:gap-8">
+              {titleWords.map((word, i) => (
+                <div key={i} className="overflow-visible py-2"> 
+                  <motion.span
+                    custom={i}
+                    variants={titleVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.1 }}
+                    className={`${dancingScript.className} block whitespace-nowrap text-7xl sm:text-8xl md:text-9xl font-bold leading-tight ${word === 'SEO' ? 'text-orange-500' : 'text-white'}`}
+                  >
+                    {word}
+                  </motion.span>
+                </div>
               ))}
-            </motion.h2>
+            </div>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="mt-10 text-slate-400 text-sm font-medium uppercase tracking-widest"
+            >
+              Scroll to explore
+            </motion.div>
           </div>
 
           {/* --- Screen 2: Cards Grid Animation --- */}
@@ -116,7 +129,6 @@ export default function WhyUs() {
                   whileHover={{ y: -8, transition: { duration: 0.2 } }}
                   className="group relative overflow-hidden rounded-2xl bg-slate-900/40 border border-slate-800/50 p-6 md:p-8 shadow-xl backdrop-blur-md"
                 >
-                  {/* Hover Highlight */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-orange-500/5 via-transparent to-transparent" />
                   
                   <div className="relative z-10 flex items-center gap-5">
