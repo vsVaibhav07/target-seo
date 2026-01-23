@@ -5,6 +5,15 @@ import { LazyMotion, domMax } from 'framer-motion'
 import Header from './components/common/header'
 import Footer from './components/common/footer'
 import ScrollProvider from './components/common/scrollProvider'
+import { Dancing_Script } from 'next/font/google'
+
+// Font ko yahan ek hi baar define karein
+const dancingScript = Dancing_Script({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-dancing', // CSS Variable banayein
+  display: 'swap',
+})
 
 // 1. Metadata with Preconnect & Performance Hints
 export const metadata: Metadata = {
@@ -19,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${dancingScript.variable}`}>
       <body className="bg-[#020617] text-slate-100 overflow-x-hidden antialiased">
         
         {/* 2. Google Analytics (optimized with afterInteractive strategy) */}

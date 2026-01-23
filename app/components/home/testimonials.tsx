@@ -2,7 +2,6 @@
 
 import {m, Variants } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react'
-import { Dancing_Script } from 'next/font/google'
 import Image from 'next/image'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -11,11 +10,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-const dancingScript = Dancing_Script({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  display: 'swap'
-})
+
 
 const testimonials = [
   {
@@ -69,9 +64,9 @@ export default function Testimonials() {
     <section className="relative flex items-center justify-center py-24 bg-slate-50 overflow-hidden lg:min-h-screen">
       <div className="max-w-7xl mx-auto px-6 relative w-full">
         
-        {/* Animated Heading - Dancing Script & Word by Word */}
+        
         <div className="flex justify-center mb-12 md:mb-20 overflow-hidden">
-          <h2 className={`${dancingScript.className} text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 flex flex-wrap gap-x-4 justify-center text-center leading-tight`}>
+          <h2 className={`font-(family-name:--font-dancing) text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 flex flex-wrap gap-x-4 justify-center text-center leading-tight`}>
             {words.map((word, i) => (
               <m.span
                 key={i}

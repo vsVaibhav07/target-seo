@@ -1,7 +1,7 @@
 
 'use client'
 
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence,m } from 'framer-motion'
 import { Menu, Phone, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'

@@ -14,15 +14,11 @@ import {
   PenTool,
   Settings,
 } from "lucide-react";
-import { Dancing_Script } from "next/font/google";
+
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-const dancing = Dancing_Script({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  display: "swap",
-});
+
 
 const services = [
   { title: "Local SEO", icon: MapPin },
@@ -126,7 +122,7 @@ export default function Services() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.1 }}
-                    className={`${dancing.className} block whitespace-nowrap text-7xl sm:text-8xl md:text-9xl font-bold leading-tight ${word === "SEO" ? "text-orange-500" : "text-slate-900"}`}
+                    className={`font-(family-name:--font-dancing) block whitespace-nowrap text-7xl sm:text-8xl md:text-9xl font-bold leading-tight ${word === "SEO" ? "text-orange-500" : "text-slate-900"}`}
                   >
                     {word}
                   </m.span>

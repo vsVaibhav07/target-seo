@@ -2,14 +2,10 @@
 
 import { m,useScroll, useTransform, Variants } from 'framer-motion'
 import { Brain, PhoneCall, Search, TrendingUp } from 'lucide-react'
-import { Dancing_Script } from 'next/font/google'
+
 import { useEffect, useRef, useState } from 'react'
 
-const dancingScript = Dancing_Script({
-  subsets: ['latin'],
-  weight: ['400', '700'], // Fixed weight
-  display: 'swap'
-})
+
 
 const items = [
   { title: 'ROI-Focused SEO', icon: TrendingUp },
@@ -93,7 +89,7 @@ export default function WhyUs() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.1 }}
-                    className={`${dancingScript.className} block whitespace-nowrap text-7xl sm:text-8xl md:text-8xl font-bold leading-tight ${word === 'SEO' ? 'text-orange-500' : 'text-white'}`}
+                    className={`font-(family-name:--font-dancing) block whitespace-nowrap text-7xl sm:text-8xl md:text-8xl font-bold leading-tight ${word === 'SEO' ? 'text-orange-500' : 'text-white'}`}
                   >
                     {word}
                   </m.span>

@@ -2,15 +2,10 @@
 
 import { useScroll, useTransform, Variants,m } from 'framer-motion'
 import { ArrowUpRight, TrendingUp } from 'lucide-react'
-import { Dancing_Script } from 'next/font/google'
 import Link from 'next/link'
 import { useRef } from 'react'
 
-const dancingScript = Dancing_Script({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  display: 'swap'
-})
+
 
 const cases = [
   {
@@ -76,7 +71,7 @@ export default function CaseStudies() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.1 }}
-                    className={`${dancingScript.className} block whitespace-nowrap text-7xl sm:text-8xl md:text-9xl font-bold leading-tight ${word === 'Studies' ? 'text-orange-500' : 'text-white'}`}
+                    className={`font-(family-name:--font-dancing) block whitespace-nowrap text-7xl sm:text-8xl md:text-9xl font-bold leading-tight ${word === 'Studies' ? 'text-orange-500' : 'text-white'}`}
                   >
                     {word}
                   </m.span>
