@@ -1,12 +1,14 @@
 "use client"
 
 import dynamic from 'next/dynamic'
+import { ReactNode } from 'react'
 
-// Aapka original SmoothScroll component yahan dynamic load hoga
+// SSR false zaroori hai kyunki Lenis browser APIs use karta hai
 const SmoothScroll = dynamic(() => import('./smoothScroll'), { 
-  ssr: false 
+  ssr: false,
+  loading: () => <>{null}</> 
 })
 
-export default function ScrollProvider({ children }: { children: React.ReactNode }) {
+export default function ScrollProvider({ children }: { children: ReactNode }) {
   return <SmoothScroll>{children}</SmoothScroll>
 }

@@ -1,47 +1,38 @@
 'use client'
 
-import { Variants,m } from 'framer-motion'
+import { m ,Variants} from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+
+// Variants ko component ke bahar rakha hai taaki re-renders par recalculate na ho
+const containerVariants:Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.04, delayChildren: 0.05 } // Faster stagger for better TBT
+  }
+}
+
+const wordVariants:Variants = {
+  hidden: { opacity: 0, y: 8 }, // Minimal Y movement to keep CLS near zero
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
+  }
+}
+
+const itemVariants:Variants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
+}
 
 export default function Hero() {
   const line1 = "We Help Businesses Rank Higher,"
   const line2 = "Get More Leads & Grow Revenue"
 
-  // Word Animation Variants - Reduced initial Y to prevent huge Layout Shifts
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.05, delayChildren: 0.1 } // Faster stagger
-    }
-  }
-
-  const wordVariants: Variants = {
-    hidden: { 
-      opacity: 0, 
-      y: 10, // Reduced from 20 to minimize CLS
-      rotateX: 10 
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      rotateX: 0,
-      transition: { 
-        duration: 0.4, // Faster duration
-        ease: [0.215, 0.61, 0.355, 1] 
-      }
-    }
-  }
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
-  }
-
   return (
-    // Problem Fix: Added min-height directly to avoid layout jump
     <section className="relative overflow-hidden py-16 lg:py-0 min-h-[600px] lg:min-h-screen flex items-center bg-white">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center w-full">
         
@@ -49,9 +40,10 @@ export default function Hero() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
+          className="will-change-transform" // Browser optimization for animations
         >
-          {/* Heading - Optimization: Added min-height to text container */}
-          <h1 className="text-4xl font-black leading-tight mb-6 text-slate-900 perspective-1000 min-h-[120px]">
+          {/* Heading - min-h adjusted for mobile/desktop to prevent layout jump */}
+          <h1 className="text-4xl lg:text-5xl font-black leading-tight mb-6 text-slate-900 perspective-1000 min-h-[100px] lg:min-h-[140px]">
             <div className="flex flex-wrap gap-x-[0.2em] overflow-hidden">
               {line1.split(" ").map((word, i) => (
                 <m.span key={i} variants={wordVariants} className="inline-block origin-bottom">
@@ -102,33 +94,30 @@ export default function Hero() {
           </m.p>
         </m.div>
 
-        {/* Right Side Image - LCP FIX */}
-        <div className="relative min-h-[300px] flex items-center justify-center">
+        {/* Right Side Image - Critical Path Optimization */}
+        <div className="relative min-h-[300px] lg:min-h-[540px] flex items-center justify-center">
           <m.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
             className="w-full"
           >
-           <Image
-  src="/heroImage.svg"
-  alt="SEO growth illustration"
-  // 1. Asli dimensions barkarar rakhein
-  width={640}
-  height={540}
-  // 2. LCP Optimization
-  priority={true} 
-  fetchPriority="high"
-  loading="eager"
-  decoding="async"
-  className="mx-auto drop-shadow-2xl h-auto w-full max-w-[640px]"
-  style={{ 
-    aspectRatio: "640 / 540",
-    contentVisibility: "auto" 
-  }}
-/>
+            <Image
+              src="/heroImage.svg"
+              alt="SEO growth illustration"
+              width={640}
+              height={540}
+              priority={true} 
+              fetchPriority="high" // Signals browser to download this immediately
+              className="mx-auto drop-shadow-2xl h-auto w-full max-w-[640px]"
+              style={{ 
+                aspectRatio: "640 / 540",
+                contentVisibility: "auto" 
+              }}
+            />
           </m.div>
-          <div className="absolute inset-0 bg-accent/5 blur-[100px] rounded-full -z-10" />
+          {/* Subtle Glow - Using opacity instead of blur for performance if needed */}
+          <div className="absolute inset-0 bg-accent/5 blur-[100px] rounded-full -z-10 pointer-events-none" />
         </div>
       </div>
 

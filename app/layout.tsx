@@ -7,56 +7,45 @@ import Footer from './components/common/footer'
 import ScrollProvider from './components/common/scrollProvider'
 import { Dancing_Script } from 'next/font/google'
 
-// Font ko yahan ek hi baar define karein
 const dancingScript = Dancing_Script({
   subsets: ['latin'],
   weight: ['400', '700'],
-  variable: '--font-dancing', // CSS Variable banayein
+  variable: '--font-dancing',
   display: 'swap',
 })
 
-// 1. Metadata with Preconnect & Performance Hints
 export const metadata: Metadata = {
   title: 'Target SEO Solutions – ROI Driven SEO Agency',
   description: 'ROI-driven SEO strategies for local and national businesses',
   other: {
-    // Google Analytics aur external scripts ke liye pehle hi connection banayein
     'preconnect': 'https://www.googletagmanager.com',
-    'dns-prefetch': 'https://www.google-analytics.com',
   }
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${dancingScript.variable}`}>
-      <body className="bg-[#020617] text-slate-100 overflow-x-hidden antialiased">
-        
-        {/* 2. Google Analytics (optimized with afterInteractive strategy) */}
-        {/* Replace G-XXXXXXXXXX with your actual Measurement ID */}
+      <body className="bg-[#020617] text-slate-100 antialiased selection:bg-orange-500/30">
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-XXXXXXXXXX', {
-              page_path: window.location.pathname,
-            });
+            gtag('config', 'G-XXXXXXXXXX');
           `}
         </Script>
 
-        {/* 3. Framer Motion Lazy Loading - Reduces JS bundle size significantly */}
-        <LazyMotion features={domMax} strict>
+        <LazyMotion features={domMax}>
           <ScrollProvider>
             <Header />
             <main>{children}</main>
             <Footer />
           </ScrollProvider>
         </LazyMotion>
-
       </body>
     </html>
   )
