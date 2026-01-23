@@ -1,8 +1,8 @@
 'use client'
 
-import { motion, animate } from 'framer-motion'
+import { motion, animate, useInView } from 'framer-motion'
 import { TrendingUp, PhoneCall, Trophy, Users } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const stats = [
   { value: 320, suffix: '%', label: 'Avg Traffic Growth', icon: TrendingUp },
@@ -25,11 +25,16 @@ function StatCard({
   delay: number
 }) {
   const [count, setCount] = useState(0)
+  const ref = useRef<HTMLDivElement | null>(null)
+  const isInView = useInView(ref, { once: true })
+
   const radius = 64
   const size = 180
   const circumference = 2 * Math.PI * radius
 
   useEffect(() => {
+    if (!isInView) return
+
     const controls = animate(0, value, {
       duration: 2,
       delay,
@@ -38,15 +43,17 @@ function StatCard({
         setCount(Math.round(latest))
       }
     })
+
     return () => controls.stop()
-  }, [value, delay])
+  }, [isInView, value, delay])
 
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -12 }}
       viewport={{ once: true }}
+      whileHover={{ y: -12 }}
       transition={{ duration: 0.6 }}
       className="group relative flex flex-col items-center rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 px-10 pt-14 pb-10 shadow-2xl hover:shadow-orange-500/20 transition-all"
     >
@@ -82,8 +89,8 @@ function StatCard({
           />
         </svg>
 
-        <div className="relative z-10 flex flex-col items-center justify-center h-[180px] w-[180px] rounded-full bg-gradient-to-br from-slate-950 to-slate-900 group-hover:scale-105 transition-transform">
-          <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-xl bg-accent/15 text-accent">
+        <div className="relative z-10 flex h-[180px] w-[180px] flex-col items-center justify-center rounded-full bg-gradient-to-br from-slate-950 to-slate-900 group-hover:scale-105 transition-transform">
+          <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-xl bg-orange-500/15 text-orange-400">
             <Icon size={40} />
           </div>
 
@@ -103,8 +110,8 @@ function StatCard({
 
 export default function Results() {
   return (
-    <section className=" folded-rectangle relative py-32 bg-gradient-to-br from-[#020617] via-[#020617] to-[#0f172a]">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="relative py-32 bg-gradient-to-br from-[#020617] via-[#020617] to-[#0f172a]">
+      <div className="mx-auto max-w-6xl px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
           {stats.map((stat, i) => (
             <StatCard
