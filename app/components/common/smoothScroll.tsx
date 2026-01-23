@@ -9,29 +9,29 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function SmoothScroll({ children }: { children: ReactNode }) {
   useEffect(() => {
+    // Initialize Lenis
     const lenis = new Lenis({
       duration: 1.2,
-      smoothWheel: true,
-      smoothTouch: false
+      // 'smoothTouch' property ko hata diya gaya hai kyunki ye ab LenisOptions ka part nahi hai
+      // Agar aapko touch synchronization chahiye toh aap 'syncTouch: true' use kar sakte hain
     })
 
-    function raf(time: number) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-
-    requestAnimationFrame(raf)
-
+    // Update ScrollTrigger on Lenis scroll
     lenis.on('scroll', ScrollTrigger.update)
 
-    gsap.ticker.add((time) => {
+    // GSAP Ticker setup
+    const updateTicker = (time: number) => {
       lenis.raf(time * 1000)
-    })
+    }
 
+    gsap.ticker.add(updateTicker)
     gsap.ticker.lagSmoothing(0)
 
+    // Cleanup function
     return () => {
       lenis.destroy()
+      gsap.ticker.remove(updateTicker)
+      ScrollTrigger.getAll().forEach(t => t.kill())
     }
   }, [])
 

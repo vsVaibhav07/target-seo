@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
+import { motion, useScroll, useTransform, useSpring, Variants } from 'framer-motion'
 import Link from 'next/link'
 import { MapPin, Settings, FileText, PenTool, Link2, LineChart } from 'lucide-react'
 import { Dancing_Script } from 'next/font/google'
@@ -45,7 +45,8 @@ export default function Services() {
 
   const x = useTransform(scrollYProgress, [0, 1], ['0%', '-50%'])
 
-  const titleVariants = {
+  // FIX: Added 'as const' to the ease array
+  const titleVariants: Variants = {
     hidden: { y: "100%", opacity: 0 },
     visible: (i: number) => ({
       y: 0,
@@ -53,12 +54,13 @@ export default function Services() {
       transition: {
         delay: i * 0.15,
         duration: 0.8,
-        ease: [0.33, 1, 0.68, 1]
+        ease: [0.33, 1, 0.68, 1] as const, 
       }
     })
   }
 
-  const cardVariants = {
+  // FIX: Added 'Variants' type and 'as const'
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 50, scale: 0.9 },
     visible: (i: number) => ({
       opacity: 1,
@@ -92,7 +94,7 @@ export default function Services() {
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex w-[200vw] h-full items-center">
           
-          {/* Screen 1: Heading - Enhanced Visibility */}
+          {/* Screen 1: Heading */}
           <div className="flex h-full w-screen flex-shrink-0 flex-col items-center justify-center px-4">
             <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-8">
               {["Core", "SEO", "Services"].map((word, i) => (
@@ -110,7 +112,6 @@ export default function Services() {
                 </div>
               ))}
             </div>
-            {/* Added a small indicator for the user to scroll */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -122,8 +123,8 @@ export default function Services() {
           </div>
 
           {/* Screen 2: Cards Grid */}
-          <div className="flex h-full w-screen flex-shrink-0 items-center justify-center px-6 md:px-20">
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 w-full max-w-5xl">
+          <div className="flex md:px-40 h-full w-screen flex-shrink-0 items-center justify-center px-6 ">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6  w-full max-w-5xl">
               {services.map((service, i) => {
                 const Icon = service.icon
                 return (
