@@ -41,7 +41,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative overflow-hidden  lg:min-h-screen flex items-center">
+    <section className="relative overflow-hidden py-16 lg:py-0 lg:min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center w-full">
         
         <motion.div
