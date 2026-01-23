@@ -93,7 +93,7 @@ export default function WhyUs() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.1 }}
-                    className={`${dancingScript.className} block whitespace-nowrap text-7xl sm:text-8xl md:text-9xl font-bold leading-tight ${word === 'SEO' ? 'text-orange-500' : 'text-white'}`}
+                    className={`${dancingScript.className} block whitespace-nowrap text-7xl sm:text-8xl md:text-8xl font-bold leading-tight ${word === 'SEO' ? 'text-orange-500' : 'text-white'}`}
                   >
                     {word}
                   </motion.span>

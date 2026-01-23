@@ -12,8 +12,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
     // Initialize Lenis
     const lenis = new Lenis({
       duration: 1.2,
-      // 'smoothTouch' property ko hata diya gaya hai kyunki ye ab LenisOptions ka part nahi hai
-      // Agar aapko touch synchronization chahiye toh aap 'syncTouch: true' use kar sakte hain
+      syncTouch:true
     })
 
     // Update ScrollTrigger on Lenis scroll

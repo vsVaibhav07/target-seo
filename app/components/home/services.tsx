@@ -145,8 +145,8 @@ export default function Services() {
           </div>
 
           {/* Screen 2: Cards Grid */}
-          <div className="flex h-full w-screen flex-shrink-0 items-center justify-center px-6 md:px-20">
-  <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
+          <div className="flex h-full w-screen min-h-screen pt-20 shrink-0 items-center justify-center px-6 md:px-20">
+  <div className="grid grid-cols-2 lg:grid-cols-3 lg:p-40 gap-8 w-full max-w-6xl">
     {services.map((service, i) => {
       const Icon = service.icon;
       

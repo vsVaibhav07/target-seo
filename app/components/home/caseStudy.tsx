@@ -86,7 +86,7 @@ export default function CaseStudies() {
           </div>
 
           {/* --- Screen 2: Compact Case Cards --- */}
-          <div className="flex h-full w-screen flex-shrink-0 items-center justify-center px-6 md:px-20">
+          <div className="flex h-full min-h-screen w-screen shrink-0 items-center justify-center px-6 md:px-20">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl">
               {cases.map((item, i) => (
                 <motion.div
