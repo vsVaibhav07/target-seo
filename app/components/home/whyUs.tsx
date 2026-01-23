@@ -1,9 +1,9 @@
 'use client'
 
-import { motion, useScroll, useTransform, Variants } from 'framer-motion'
-import { TrendingUp, Search, Brain, PhoneCall } from 'lucide-react'
-import { useRef, useState, useEffect } from 'react'
+import { m,useScroll, useTransform, Variants } from 'framer-motion'
+import { Brain, PhoneCall, Search, TrendingUp } from 'lucide-react'
 import { Dancing_Script } from 'next/font/google'
+import { useEffect, useRef, useState } from 'react'
 
 const dancingScript = Dancing_Script({
   subsets: ['latin'],
@@ -67,7 +67,7 @@ export default function WhyUs() {
         ref={cursorRef}
         className="pointer-events-none fixed top-0 left-0 z-50 h-10 w-10 -ml-5 -mt-5 rounded-full border-2 border-orange-500 flex items-center justify-center transition-transform duration-100 ease-out hidden md:flex"
       >
-        <motion.div
+        <m.div
           animate={{
             scale: isHovered ? 1.8 : 1,
             backgroundColor: isHovered ? 'rgba(249, 115, 22, 0.2)' : 'transparent',
@@ -80,14 +80,14 @@ export default function WhyUs() {
       <div className="sticky top-0 h-screen overflow-hidden bg-[#020617]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1),transparent_70%)]" />
 
-        <motion.div style={{ x }} className="flex h-full w-[200vw]">
+        <m.div style={{ x }} className="flex h-full w-[200vw]">
           
           {/* --- Screen 1: Heading Animation --- */}
           <div className="flex h-full w-screen flex-shrink-0 flex-col items-center justify-center px-4">
             <div className="flex flex-col lg:flex-row items-center justify-center gap-2 md:gap-8">
               {titleWords.map((word, i) => (
                 <div key={i} className="overflow-visible py-2"> 
-                  <motion.span
+                  <m.span
                     custom={i}
                     variants={titleVariants}
                     initial="hidden"
@@ -96,25 +96,25 @@ export default function WhyUs() {
                     className={`${dancingScript.className} block whitespace-nowrap text-7xl sm:text-8xl md:text-8xl font-bold leading-tight ${word === 'SEO' ? 'text-orange-500' : 'text-white'}`}
                   >
                     {word}
-                  </motion.span>
+                  </m.span>
                 </div>
               ))}
             </div>
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
               className="mt-10 text-slate-400 text-sm font-medium uppercase tracking-widest"
             >
               Scroll to explore
-            </motion.div>
+            </m.div>
           </div>
 
           {/* --- Screen 2: Cards Grid Animation --- */}
           <div className="flex h-full w-[100vw] md:px-40 lg:px-52 items-center justify-center px-6 sm:px-10">
             <div className="mx-auto grid max-w-4xl grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 w-full">
               {items.map(({ title, icon: Icon }, i) => (
-                <motion.div
+                <m.div
                   key={title}
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
@@ -139,12 +139,12 @@ export default function WhyUs() {
                       {title}
                     </p>
                   </div>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>
           
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

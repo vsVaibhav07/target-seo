@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, animate, useInView } from 'framer-motion'
+import { m, animate, useInView } from 'framer-motion'
 import { TrendingUp, PhoneCall, Trophy, Users } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
@@ -52,7 +52,7 @@ function StatCard({
   }, [isInView, value, delay])
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
@@ -76,7 +76,7 @@ function StatCard({
             strokeWidth="6"
             fill="none"
           />
-          <motion.circle
+          <m.circle
             cx={size / 2}
             cy={size / 2}
             r={radius}
@@ -106,7 +106,7 @@ function StatCard({
       <p className="mt-6 text-sm font-bold text-slate-300 text-center uppercase tracking-widest group-hover:text-white transition-colors">
         {label}
       </p>
-    </motion.div>
+    </m.div>
   )
 }
 

@@ -1,11 +1,11 @@
 
 'use client'
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { Menu, X, Phone } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
+import { Menu, Phone, X } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useState } from 'react'
 
 export default function Header() {
   const [open, setOpen] = useState(false)
@@ -49,7 +49,7 @@ export default function Header() {
 
       <AnimatePresence>
         {open && (
-          <motion.div
+          <m.div
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
@@ -78,7 +78,7 @@ export default function Header() {
                 Free SEO Audit
               </Link>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </header>

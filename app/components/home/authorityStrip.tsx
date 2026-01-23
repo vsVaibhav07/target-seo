@@ -1,9 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import {m} from "framer-motion"
 
 // Swiper styles
 import 'swiper/css'
@@ -13,7 +13,7 @@ const logos = ['GooglePartner', 'GooglePartner', 'GooglePartner', 'GooglePartner
 export default function AuthorityStrip() {
   return (
     <section className="relative py-12 bg-white overflow-hidden">
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -43,7 +43,7 @@ export default function AuthorityStrip() {
         >
           {logos.map((logo, i) => (
             <SwiperSlide key={i} className="flex justify-center items-center">
-              <motion.div
+              <m.div
                 whileHover={{ y: -4 }}
                 className="group relative flex items-center justify-center rounded-2xl bg-slate-50/50 border border-slate-100 px-6 py-4 transition-all duration-300"
               >
@@ -54,11 +54,11 @@ export default function AuthorityStrip() {
                   height={36}
                   className="grayscale group-hover:grayscale-0 transition duration-500 opacity-60 group-hover:opacity-100"
                 />
-              </motion.div>
+              </m.div>
             </SwiperSlide>
           ))}
         </Swiper>
-      </motion.div>
+      </m.div>
 
       {/* CSS for continuous smooth scrolling effect */}
       <style jsx global>{`

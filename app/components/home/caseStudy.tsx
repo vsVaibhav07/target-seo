@@ -1,10 +1,10 @@
 'use client'
 
-import { useRef } from 'react'
-import Link from 'next/link'
-import { motion, useScroll, useTransform, Variants } from 'framer-motion'
-import { TrendingUp, ArrowUpRight } from 'lucide-react'
+import { useScroll, useTransform, Variants,m } from 'framer-motion'
+import { ArrowUpRight, TrendingUp } from 'lucide-react'
 import { Dancing_Script } from 'next/font/google'
+import Link from 'next/link'
+import { useRef } from 'react'
 
 const dancingScript = Dancing_Script({
   subsets: ['latin'],
@@ -63,14 +63,14 @@ export default function CaseStudies() {
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.05),transparent_70%)]" />
 
-        <motion.div style={{ x }} className="flex w-[200vw] h-full items-center">
+        <m.div style={{ x }} className="flex w-[200vw] h-full items-center">
           
           {/* --- Screen 1: Heading --- */}
           <div className="flex h-full w-screen flex-shrink-0 flex-col items-center justify-center px-4">
             <div className="flex flex-col lg:flex-row items-center justify-center gap-2 md:gap-8">
               {titleWords.map((word, i) => (
                 <div key={i} className="overflow-visible py-2">
-                  <motion.span
+                  <m.span
                     custom={i}
                     variants={titleVariants}
                     initial="hidden"
@@ -79,7 +79,7 @@ export default function CaseStudies() {
                     className={`${dancingScript.className} block whitespace-nowrap text-7xl sm:text-8xl md:text-9xl font-bold leading-tight ${word === 'Studies' ? 'text-orange-500' : 'text-white'}`}
                   >
                     {word}
-                  </motion.span>
+                  </m.span>
                 </div>
               ))}
             </div>
@@ -89,7 +89,7 @@ export default function CaseStudies() {
           <div className="flex h-full min-h-screen w-screen shrink-0 items-center justify-center px-6 md:px-20">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl">
               {cases.map((item, i) => (
-                <motion.div
+                <m.div
                   key={item.industry}
                   initial={{ opacity: 0, scale: 0.95, y: 20 }}
                   whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -98,7 +98,7 @@ export default function CaseStudies() {
                   className="group relative flex flex-col justify-between overflow-hidden rounded-[2rem] bg-slate-900/40 border border-slate-800/50 p-6 shadow-xl backdrop-blur-md h-fit"
                 >
                   {/* Expanding Hover Background */}
-                  <motion.div
+                  <m.div
                     className="absolute inset-0 bg-gradient-to-br from-orange-500 to-orange-600"
                     initial={{ clipPath: 'circle(0% at 50% 100%)' }}
                     variants={{ hover: { clipPath: 'circle(150% at 50% 100%)' } }}
@@ -131,7 +131,7 @@ export default function CaseStudies() {
                       ))}
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               ))}
             </div>
 
@@ -146,7 +146,7 @@ export default function CaseStudies() {
               </Link>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

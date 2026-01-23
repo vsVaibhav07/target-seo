@@ -1,15 +1,15 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useScroll, useTransform, Variants } from 'framer-motion'
-import { 
-  Scale, 
-  Stethoscope, 
-  Home, 
-  ShoppingCart, 
-  Layers 
+import { useScroll, useTransform, Variants,m } from 'framer-motion'
+import {
+  Home,
+  Layers,
+  Scale,
+  ShoppingCart,
+  Stethoscope
 } from 'lucide-react'
 import { Dancing_Script } from 'next/font/google'
+import { useRef } from 'react'
 
 const dancingScript = Dancing_Script({
   subsets: ['latin'],
@@ -56,14 +56,14 @@ export default function Industries() {
     <section ref={sectionRef} className="relative h-[300vh] bg-white overflow-clip">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         
-        <motion.div style={{ x }} className="flex w-[200vw] h-full items-center">
+        <m.div style={{ x }} className="flex w-[200vw] h-full items-center">
           
           {/* --- Screen 1: Animated Heading (Light Theme) --- */}
           <div className="flex h-full w-screen flex-shrink-0 flex-col items-center justify-center px-4 bg-slate-50">
             <div className="flex flex-col lg:flex-row items-center justify-center gap-2 md:gap-8">
               {titleWords.map((word, i) => (
                 <div key={i} className="overflow-visible py-2">
-                  <motion.span
+                  <m.span
                     custom={i}
                     variants={titleVariants}
                     initial="hidden"
@@ -72,18 +72,18 @@ export default function Industries() {
                     className={`${dancingScript.className} block whitespace-nowrap text-7xl sm:text-8xl md:text-9xl font-bold leading-tight ${word === 'Serve' ? 'text-orange-500' : 'text-slate-900'}`}
                   >
                     {word}
-                  </motion.span>
+                  </m.span>
                 </div>
               ))}
             </div>
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
               className="mt-10 text-slate-400 text-sm font-medium uppercase tracking-widest"
             >
               Scroll to explore
-            </motion.div>
+            </m.div>
           </div>
 
           {/* --- Screen 2: Compact Industry Cards --- */}
@@ -92,7 +92,7 @@ export default function Industries() {
               {industries.map((industry, i) => {
                 const Icon = industry.icon
                 return (
-                  <motion.div
+                  <m.div
                     key={industry.name}
                     initial={{ opacity: 0, scale: 0.9, y: 20 }}
                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -102,7 +102,7 @@ export default function Industries() {
                     className="group relative flex flex-col items-center justify-center aspect-square rounded-[2rem] bg-white border border-slate-100 p-6 shadow-sm overflow-hidden"
                   >
                     {/* Hover Background Expansion */}
-                    <motion.div
+                    <m.div
                       className="absolute inset-0 bg-gradient-to-br from-orange-400 to-orange-600"
                       initial={{ clipPath: 'circle(0% at 50% 50%)' }}
                       variants={{
@@ -112,7 +112,7 @@ export default function Industries() {
                     />
 
                     {/* Rotating Icon Container */}
-                    <motion.div 
+                    <m.div 
                       variants={{
                         hover: { rotate: 360, scale: 1.1 }
                       }}
@@ -120,24 +120,24 @@ export default function Industries() {
                       className="relative z-10 mb-3 p-4 rounded-2xl bg-orange-50 text-orange-600 group-hover:bg-white/20 group-hover:text-white transition-all duration-300 shadow-inner"
                     >
                       <Icon size={28} strokeWidth={1.5} />
-                    </motion.div>
+                    </m.div>
 
                     {/* Industry Label */}
-                    <motion.span 
+                    <m.span 
                       className="relative z-10 text-center font-bold text-slate-700 group-hover:text-white transition-colors text-xs md:text-sm"
                     >
                       {industry.name}
-                    </motion.span>
+                    </m.span>
 
                     {/* Subtle bottom accent line */}
                     <div className="absolute bottom-3 w-4 h-0.5 bg-orange-500/20 rounded-full group-hover:bg-white group-hover:w-8 transition-all duration-500" />
-                  </motion.div>
+                  </m.div>
                 )
               })}
             </div>
           </div>
           
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

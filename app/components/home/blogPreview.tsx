@@ -1,6 +1,6 @@
 'use client'
 
-import { motion,Variants } from 'framer-motion'
+import { Variants,m } from 'framer-motion'
 import Link from 'next/link'
 
 const blogs = [
@@ -53,43 +53,43 @@ export default function BlogPreview() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           
           {/* Left Content: Animated Text */}
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.3 }}
             variants={containerVariants}
           >
-            <motion.p variants={wordVariants} className="text-accent font-semibold mb-4 italic">
+            <m.p variants={wordVariants} className="text-accent font-semibold mb-4 italic">
               Insights & Knowledge
-            </motion.p>
+            </m.p>
             
             <h2 className="text-4xl md:text-5xl font-extrabold leading-tight flex flex-wrap gap-x-3">
               {words.map((word, i) => (
-                <motion.span key={i} variants={wordVariants} className={`inline-block ${word=="SEO"||word=="Growth"?"text-accent":""}`}>
+                <m.span key={i} variants={wordVariants} className={`inline-block ${word=="SEO"||word=="Growth"?"text-accent":""}`}>
                   {word}
-                </motion.span>
+                </m.span>
               ))}
             </h2>
 
-            <motion.p variants={wordVariants} className="mt-6 text-muted max-w-lg">
+            <m.p variants={wordVariants} className="mt-6 text-muted max-w-lg">
               Actionable SEO strategies, case studies and growth experiments
               curated by our experts.
-            </motion.p>
+            </m.p>
 
-            <motion.div variants={wordVariants}>
+            <m.div variants={wordVariants}>
               <Link
                 href="/blog"
                 className="inline-block mt-10 rounded-xl bg-accent px-8 py-4 text-white font-semibold shadow-lg hover:shadow-2xl hover:scale-105 transition"
               >
                 Explore All Blogs
               </Link>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
 
           {/* Right Content: Stacked Cards with Float Animation */}
           <div className="relative h-[460px]">
             {blogs.map((blog, i) => (
-              <motion.div
+              <m.div
                 key={blog.title}
                 initial={{ opacity: 0, scale: 0.8, y: 40 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -125,11 +125,11 @@ export default function BlogPreview() {
                     <p className="text-sm text-slate-200 opacity-80 group-hover:opacity-100">{blog.readTime}</p>
                   </div>
                 </Link>
-              </motion.div>
+              </m.div>
             ))}
 
             {/* Background Glow */}
-            <motion.div
+            <m.div
               animate={{ y: [0, -12, 0], scale: [1, 1.1, 1] }}
               transition={{ duration: 6, repeat: Infinity }}
               className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-accent/20 blur-2xl"

@@ -1,15 +1,15 @@
 'use client'
 
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Pagination, Navigation } from 'swiper/modules'
-import { motion,Variants } from 'framer-motion'
-import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react'
-import Image from 'next/image'
+import {m, Variants } from 'framer-motion'
+import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react'
 import { Dancing_Script } from 'next/font/google'
+import Image from 'next/image'
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 import 'swiper/css'
-import 'swiper/css/pagination'
 import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 const dancingScript = Dancing_Script({
   subsets: ['latin'],
@@ -73,7 +73,7 @@ export default function Testimonials() {
         <div className="flex justify-center mb-12 md:mb-20 overflow-hidden">
           <h2 className={`${dancingScript.className} text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 flex flex-wrap gap-x-4 justify-center text-center leading-tight`}>
             {words.map((word, i) => (
-              <motion.span
+              <m.span
                 key={i}
                 custom={i}
                 variants={wordVariants}
@@ -83,7 +83,7 @@ export default function Testimonials() {
                 className={word === 'Clients' ? 'text-orange-500' : ''}
               >
                 {word}
-              </motion.span>
+              </m.span>
             ))}
           </h2>
         </div>
@@ -115,7 +115,7 @@ export default function Testimonials() {
         >
           {testimonials.map((item, i) => (
             <SwiperSlide key={i} className="!h-auto">
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: false }}
@@ -150,7 +150,7 @@ export default function Testimonials() {
                     <Star key={index} size={16} className="text-orange-400 fill-orange-400" />
                   ))}
                 </div>
-              </motion.div>
+              </m.div>
             </SwiperSlide>
           ))}
         </Swiper>
