@@ -41,7 +41,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative overflow-hidden py-16 lg:min-h-screen flex items-center">
+    <section className="relative overflow-hidden  lg:min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center w-full">
         
         <motion.div
@@ -50,7 +50,7 @@ export default function Hero() {
           animate="visible"
         >
           {/* Heading with Word-by-Word Animation */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6 text-slate-900 perspective-1000">
+          <h1 className="text-4xl font-black leading-tight mb-6 text-slate-900 perspective-1000">
             <div className="flex flex-wrap gap-x-[0.2em] overflow-hidden">
               {line1.split(" ").map((word, i) => (
                 <motion.span key={i} variants={wordVariants} className="inline-block origin-bottom">
