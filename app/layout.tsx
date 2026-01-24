@@ -2,10 +2,9 @@ import './globals.css'
 import { Metadata } from 'next'
 import Script from 'next/script'
 import { LazyMotion, domMax } from 'framer-motion'
-import Header from './components/common/header'
-import Footer from './components/common/footer'
+
 import ScrollProvider from './components/common/scrollProvider'
-import { Dancing_Script } from 'next/font/google'
+import { Dancing_Script,Space_Grotesk } from 'next/font/google'
 
 const dancingScript = Dancing_Script({
   subsets: ['latin'],
@@ -13,6 +12,7 @@ const dancingScript = Dancing_Script({
   variable: '--font-dancing',
   display: 'swap',
 })
+
 
 export const metadata: Metadata = {
   title: 'Target SEO Solutions – ROI Driven SEO Agency',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${dancingScript.variable}`}>
+    <html lang="en" className={`${dancingScript.variable} `}>
       <body className="bg-[#020617] text-slate-100 antialiased selection:bg-orange-500/30">
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
@@ -41,9 +41,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <LazyMotion features={domMax}>
           <ScrollProvider>
-            <Header />
+            {/* <Header /> */}
             <main>{children}</main>
-            <Footer />
+            {/* <Footer /> */}
           </ScrollProvider>
         </LazyMotion>
       </body>

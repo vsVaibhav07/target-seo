@@ -48,7 +48,7 @@ export default function BlogPreview() {
   }
 
   return (
-    <section className="relative py-32 overflow-hidden bg-gradient-to-br from-white to-slate-50">
+    <section className="relative py-32  overflow-hidden bg-gradient-to-br from-white to-slate-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           

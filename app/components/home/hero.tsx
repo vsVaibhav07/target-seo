@@ -78,8 +78,8 @@ export default function Hero() {
   const rotation = useSpring(rotationRaw, { stiffness: 40, damping: 20 })
 
   const images = [
-    '/marketing.jpg', '/seoImage1.jpg', '/seo2.jpg', '/social.jpg',
-    '/startup.jpg', '/webAnalysis.jpg', '/seo.png', '/webAnalysis.jpg'
+    '/marketing.webp', '/seoImage1.webp', '/seo2.webp', '/social.webp',
+    '/startup.webp', '/webAnalysis.webp', '/seo.webp', '/webAnalysis.webp'
   ];
 
   return (
@@ -131,7 +131,7 @@ export default function Hero() {
 
                 <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mb-6">
                   <m.div variants={buttonAdvanced} whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
-                    <Link href="/free-audit" className="group relative inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-full font-bold shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:shadow-[0_0_30px_rgba(234,88,12,0.5)] transition-all text-lg w-full sm:w-auto">
+                    <Link href="/rebrand-solution" className="group relative inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-full font-bold shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:shadow-[0_0_30px_rgba(234,88,12,0.5)] transition-all text-lg w-full sm:w-auto">
                       Get Free SEO Audit
                       <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
@@ -158,7 +158,7 @@ export default function Hero() {
               
               <m.div 
                 style={{ rotateY: rotation, transformStyle: "preserve-3d" }}
-                className="relative w-[160px] h-[240px] sm:w-[200px] sm:h-[280px] lg:w-[220px] lg:h-[320px]"
+                className="relative w-[160px] h-[240px] sm:w-[200px] gap-4 sm:h-[280px] lg:w-[220px] lg:h-[320px]"
               >
                 {images.map((src, i) => {
                   const angle = (i * 360) / images.length
@@ -203,13 +203,13 @@ function ItemCard({ src, rotation, angle }: { src: string, rotation: MotionValue
   return (
     <m.div 
       style={{ scale, opacity, y: yOffset }}
-      className="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 shadow-2xl"
+      className="relative w-[75%] sm:w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 shadow-2xl"
     >
       <Image 
         src={src} 
         alt="Portfolio Item" 
         fill 
-        className="object-cover"
+        className="object-cover w-10 sm:w-auto"
         sizes="(max-width: 768px) 160px, 220px"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
