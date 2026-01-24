@@ -138,7 +138,7 @@ const RebrandHero: React.FC = () => {
     <section 
       ref={containerRef}
       style={{ clipPath: "inset(0 0 0 0)" }}
-      className="relative w-full h-screen bg-black cursor-none z-10"
+      className="relative w-full h-screen max-w-screen overflow-hidden bg-black cursor-none z-10"
     >
       {/* PINNED BACKGROUND VIDEO */}
       <div className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none">
