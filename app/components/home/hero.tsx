@@ -4,14 +4,14 @@ import { m, Variants, LazyMotion, domAnimation, useScroll, useTransform, useSpri
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
-// --- Animations Restored ---
+// --- Re-triggerable Animations ---
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.5 }
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
   }
 }
 
@@ -20,29 +20,35 @@ const slowWipeVariants: Variants = {
   visible: {
     opacity: 1,
     clipPath: 'inset(0 0% 0 0)',
-    transition: { duration: 1.2, ease: [0.25, 1, 0.5, 1] }
+    transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] }
   }
 }
 
 const simpleReveal: Variants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1, delay: 1.5 } }
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.6, delay: 0.8 } 
+  }
 }
 
 const wordHover: Variants = {
   hover: {
     y: -3,
     scale: 1.05,
-    color: "#ea580c", 
+    color: "#f97316", 
     transition: { type: "spring", stiffness: 400, damping: 10 }
   }
 }
 
 const buttonAdvanced: Variants = {
-  hidden: { scale: 0, opacity: 0, y: 20 },
+  hidden: { scale: 0.9, opacity: 0, y: 20 },
   visible: { 
-    scale: 1, opacity: 1, y: 0,
-    transition: { type: "spring", stiffness: 260, damping: 20, delay: 1.8 }
+    scale: 1, 
+    opacity: 1, 
+    y: 0,
+    transition: { type: "spring", stiffness: 200, damping: 15, delay: 1 }
   }
 }
 
@@ -51,96 +57,111 @@ export default function Hero() {
   const line2 = "Get More Leads & Grow Revenue"
   
   const containerRef = useRef<HTMLDivElement>(null)
+  const [radius, setRadius] = useState(300)
+
+  // Responsive Radius logic
+  useEffect(() => {
+    const handleResize = () => {
+      setRadius(window.innerWidth < 768 ? 160 : 300)
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   })
 
-  // Rotation logic
   const rotationRaw = useTransform(scrollYProgress, [0, 1], [0, -360])
   const rotation = useSpring(rotationRaw, { stiffness: 40, damping: 20 })
 
   const images = [
-    '/marketing.jpg',
-    '/seoImage1.jpg',
-    '/seo2.jpg',
-    '/social.jpg',
-    '/startup.jpg',
-    '/webAnalysis.jpg',
-    '/seo.png',
-    '/webAnalysis.jpg'
+    '/marketing.jpg', '/seoImage1.jpg', '/seo2.jpg', '/social.jpg',
+    '/startup.jpg', '/webAnalysis.jpg', '/seo.png', '/webAnalysis.jpg'
   ];
-  const radius = 300 
 
   return (
-    <section ref={containerRef} className="relative h-[400vh] bg-black overflow-clip">
+    <section ref={containerRef} className="relative h-[300vh] md:h-[400vh] bg-black overflow-clip">
       
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center py-10">
         
         {/* BACKGROUND */}
         <div className="absolute inset-0 z-0">
-          <video autoPlay muted loop playsInline className="block w-full h-full object-cover opacity-60">
+          <video autoPlay muted loop playsInline className="block w-full h-full object-cover opacity-40">
             <source src="/heroBG.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/60 to-black md:bg-gradient-to-r md:from-black md:via-black/80 md:to-transparent" />
         </div>
 
         <LazyMotion features={domAnimation}>
-          <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center w-full">
+          <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-8 items-center w-full">
             
-            {/* LEFT CONTENT */}
-            <m.div variants={containerVariants} initial="hidden" animate="visible" className="will-change-transform">
-              <h1 className="text-4xl sm:text-6xl lg:text-4xl font-black leading-[1.05] mb-6 text-white">
-                <div className="flex flex-wrap gap-x-[0.25em] mb-2">
+            {/* LEFT CONTENT - Triggered on view */}
+            <m.div 
+              variants={containerVariants} 
+              initial="hidden" 
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }} // Re-triggers whenever 30% of hero is in view
+              className="text-center lg:text-left pt-16 lg:pt-0"
+            >
+              <h1 className="text-3xl sm:text-5xl  font-(family-name:--font-dancing)  font-black leading-[1.1] mb-6 text-white tracking-tight">
+                <div className="flex flex-wrap justify-center lg:justify-start gap-x-[0.2em] mb-1">
                   {line1.split(" ").map((word, i) => (
                     <m.span key={i} variants={slowWipeVariants} className="inline-block">
                       <m.span whileHover="hover" variants={wordHover} className="inline-block cursor-default">{word}</m.span>
                     </m.span>
                   ))}
                 </div>
-                <div className="flex flex-wrap gap-x-[0.35em]">
+                <div className="flex flex-wrap justify-center lg:justify-start gap-x-[0.2em]">
                   {line2.split(" ").map((word, i) => (
                     <m.span key={i} variants={slowWipeVariants} className="inline-block">
-                      <m.span whileHover="hover" variants={wordHover} className={`inline-block cursor-default ${word.includes('Revenue') || word.includes('Leads') ? 'text-orange-600' : ''}`}>{word}</m.span>
+                      <m.span whileHover="hover" variants={wordHover} className={`inline-block cursor-default ${word.includes('Revenue') || word.includes('Leads') ? 'text-orange-500' : ''}`}>{word}</m.span>
                     </m.span>
                   ))}
                 </div>
               </h1>
 
               <m.div variants={simpleReveal}>
-                <p className="text-lg lg:text-xl text-slate-300 mb-10 leading-relaxed max-w-xl">
+                <p className="text-base sm:text-lg lg:text-xl text-slate-400 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
                   ROI-driven SEO strategies for local and national businesses. 
                   <span className="font-bold text-white"> No fluff. Just results.</span>
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-5 mb-10">
-                  <m.div variants={buttonAdvanced} whileHover={{ scale: 1.05, y: -5 }} whileTap={{ scale: 0.95 }}>
-                    <Link href="/free-audit" className="group inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-10 py-5 rounded-xl font-bold shadow-2xl shadow-orange-600/40 hover:bg-orange-500 transition-colors text-lg w-full sm:w-auto">
+                <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mb-6">
+                  <m.div variants={buttonAdvanced} whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
+                    <Link href="/free-audit" className="group relative inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-full font-bold shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:shadow-[0_0_30px_rgba(234,88,12,0.5)] transition-all text-lg w-full sm:w-auto">
                       Get Free SEO Audit
-                      <ArrowRight size={22} className="group-hover:translate-x-2 transition-transform" />
+                      <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </m.div>
 
-                  <m.div variants={buttonAdvanced} whileHover={{ scale: 1.05, y: -5 }} whileTap={{ scale: 0.95 }}>
-                    <Link href="/case-studies" className="inline-flex items-center justify-center px-10 py-5 rounded-xl border-2 border-white/30 text-white font-bold hover:bg-white/10 backdrop-blur-sm transition-colors text-lg w-full sm:w-auto">View Case Studies</Link>
+                  <m.div variants={buttonAdvanced} whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
+                    <Link href="/case-studies" className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/20 text-white font-bold hover:bg-white/5 backdrop-blur-md transition-all text-lg w-full sm:w-auto">
+                      View Case Studies
+                    </Link>
                   </m.div>
                 </div>
               </m.div>
             </m.div>
 
-            {/* RIGHT SIDE: FIXED CAROUSEL */}
-            <div className="relative h-[500px] w-full flex items-center justify-center perspective-[2000px]">
-              {/* Central Glow */}
-              <div className="absolute w-64 h-64 bg-orange-600/20 blur-[100px] rounded-full" />
+            {/* RIGHT SIDE: CAROUSEL */}
+            <m.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: false }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="relative h-[350px] sm:h-[450px] lg:h-[500px] w-full flex items-center justify-center perspective-[1500px] lg:perspective-[2000px]"
+            >
+              <div className="absolute w-48 h-48 bg-orange-600/30 blur-[100px] rounded-full" />
               
               <m.div 
                 style={{ rotateY: rotation, transformStyle: "preserve-3d" }}
-                className="relative w-[220px] h-[320px]"
+                className="relative w-[160px] h-[240px] sm:w-[200px] sm:h-[280px] lg:w-[220px] lg:h-[320px]"
               >
                 {images.map((src, i) => {
                   const angle = (i * 360) / images.length
-                  
                   return (
                     <m.div
                       key={i}
@@ -156,7 +177,7 @@ export default function Hero() {
                   )
                 })}
               </m.div>
-            </div>
+            </m.div>
           </div>
         </LazyMotion>
       </div>
@@ -164,33 +185,34 @@ export default function Hero() {
   )
 }
 
-// Separate component for the card to handle per-frame scaling efficiently
 function ItemCard({ src, rotation, angle }: { src: string, rotation: MotionValue<number>, angle: number }) {
-  // UseTransform for the scale of each individual card
   const scale = useTransform(rotation, (r: number) => {
-    // Logic: Calculate if this specific card is facing front
     const totalRotation = (r + angle) % 360
     const normalized = Math.abs(totalRotation > 180 ? totalRotation - 360 : totalRotation)
-    // Scale from 1.15 (front) to 0.6 (back)
-    return 1.15 - (normalized / 180) * 0.55
+    return 1.1 - (normalized / 180) * 0.5
   })
 
-  // Also adding opacity for more depth
-  const opacity = useTransform(scale, [0.6, 1.15], [0.3, 1])
+  const yOffset = useTransform(rotation, (r: number) => {
+    const totalRotation = (r + angle) % 360
+    const normalized = Math.abs(totalRotation > 180 ? totalRotation - 360 : totalRotation)
+    return (normalized / 180) * 40 - 20
+  })
+
+  const opacity = useTransform(scale, [0.6, 1.1], [0.2, 1])
 
   return (
     <m.div 
-      style={{ scale, opacity }}
-      className="relative w-full h-full rounded-2xl overflow-hidden border border-white/20 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
+      style={{ scale, opacity, y: yOffset }}
+      className="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 shadow-2xl"
     >
       <Image 
         src={src} 
-        alt="Portfolio" 
+        alt="Portfolio Item" 
         fill 
         className="object-cover"
-        sizes="220px"
+        sizes="(max-width: 768px) 160px, 220px"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
     </m.div>
   )
 }
