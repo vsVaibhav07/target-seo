@@ -5,7 +5,7 @@ import RebrandServices from '../components/rebrand-solution/services'
 
 const Rebrand = () => {
   return (
-    <div>
+    <div className='max-w-screen overflow-hidden' >
         <Navbar/>
         <RebrandHero/>
         <RebrandServices/>
