@@ -1,6 +1,6 @@
 'use client'
 
-import { m, Variants, LazyMotion, domAnimation, useScroll, useTransform, useSpring } from 'framer-motion'
+import { m, Variants, LazyMotion, domAnimation, useScroll, useTransform, useSpring, MotionValue } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -63,15 +63,15 @@ export default function Hero() {
 
   const images = [
     '/marketing.jpg',
-  '/seoImage1.jpg',
-  '/seo2.jpg',
-  '/social.jpg',
-  '/startup.jpg',
-  '/webAnalysis.jpg',
-  '/seo.png',
-  '/webAnalysis.jpg'
-];
-  const radius =300 
+    '/seoImage1.jpg',
+    '/seo2.jpg',
+    '/social.jpg',
+    '/startup.jpg',
+    '/webAnalysis.jpg',
+    '/seo.png',
+    '/webAnalysis.jpg'
+  ];
+  const radius = 300 
 
   return (
     <section ref={containerRef} className="relative h-[400vh] bg-black overflow-clip">
@@ -151,7 +151,6 @@ export default function Hero() {
                         transformStyle: "preserve-3d"
                       }}
                     >
-                      {/* Inner m.div handles the scaling relative to rotation */}
                       <ItemCard src={src} rotation={rotation} angle={angle} />
                     </m.div>
                   )
@@ -166,9 +165,9 @@ export default function Hero() {
 }
 
 // Separate component for the card to handle per-frame scaling efficiently
-function ItemCard({ src, rotation, angle }: { src: string, rotation: any, angle: number }) {
+function ItemCard({ src, rotation, angle }: { src: string, rotation: MotionValue<number>, angle: number }) {
   // UseTransform for the scale of each individual card
-  const scale = useTransform(rotation, (r) => {
+  const scale = useTransform(rotation, (r: number) => {
     // Logic: Calculate if this specific card is facing front
     const totalRotation = (r + angle) % 360
     const normalized = Math.abs(totalRotation > 180 ? totalRotation - 360 : totalRotation)
