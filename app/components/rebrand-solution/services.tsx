@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
-import { m, useScroll, useTransform, LazyMotion, domAnimation } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import React, { useRef, useEffect, useState } from "react";
+import { m, useScroll, useTransform, LazyMotion, domAnimation, useSpring } from "framer-motion";
+import { ArrowUpRight, MoveRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -19,53 +19,65 @@ const services = [
 
 const RebrandServices = () => {
   const targetRef = useRef<HTMLDivElement>(null);
+  const scrollContentRef = useRef<HTMLDivElement>(null);
   const serviceHeadingRef = useRef<HTMLHeadingElement>(null);
-  
-  const { scrollYProgress } = useScroll({ target: targetRef });
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-66.66%"]);
+  const [limit, setLimit] = useState(0);
 
-  // --- STEP 1: Letter Animation Trigger ---
+  useEffect(() => {
+    const compute = () => {
+      if (scrollContentRef.current) {
+        setLimit(scrollContentRef.current.scrollWidth - window.innerWidth);
+      }
+    };
+    compute();
+    window.addEventListener("resize", compute);
+    return () => window.removeEventListener("resize", compute);
+  }, []);
+
+  const { scrollYProgress } = useScroll({ target: targetRef });
+  const x = useTransform(scrollYProgress, [0, 1], [0, -limit]);
+
   useEffect(() => {
     if (serviceHeadingRef.current) {
       const chars = serviceHeadingRef.current.querySelectorAll(".service-char");
       
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: serviceHeadingRef.current,
-          start: "top 80%", // Jab heading viewport ke 80% par aaye
-          toggleActions: "play none none reverse",
-          onEnter: () => tl.restart(),
-          onEnterBack: () => tl.restart(),
-        }
+      ScrollTrigger.create({
+        trigger: serviceHeadingRef.current,
+        start: "top 90%",
+        onEnter: () => animateChars(chars, 1),
+        onEnterBack: () => animateChars(chars, -1),
       });
-
-      tl.fromTo(
-        chars,
-        {
-          opacity: 0,
-          y: (i) => (i % 2 === 0 ? 80 : -80), // Opposite movement
-          skewX: (i) => (i % 2 === 0 ? 20 : -20),
-        },
-        {
-          opacity: 1,
-          y: 0,
-          skewX: 0,
-          duration: 1.2,
-          stagger: 0.04,
-          ease: "expo.out",
-        }
-      );
     }
 
-    return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
+    const animateChars = (chars: NodeListOf<Element>, direction: number) => {
+      gsap.fromTo(chars,
+        { 
+          opacity: 0, 
+          y: (i) => (i % 2 === 0 ? 60 * direction : -60 * direction), 
+          skewX: (i) => (i % 2 === 0 ? 25 : -25) 
+        },
+        { 
+          opacity: 1, 
+          y: 0, 
+          skewX: 0, 
+          duration: 1, 
+          stagger: 0.03, 
+          ease: "expo.out",
+          overwrite: true
+        }
+      );
     };
+
+    return () => { ScrollTrigger.getAll().forEach(t => t.kill()); };
   }, []);
 
-  // --- STEP 2: Text Splitting Helper ---
   const splitText = (text: string) => {
+    const coloredIndices = [2, 4, 5]; 
     return text.split("").map((char, i) => (
-      <span key={i} className="service-char  inline-block will-change-transform">
+      <span 
+        key={i} 
+        className={`service-char inline-block will-change-transform ${coloredIndices.includes(i) ? 'text-orange-600' : 'text-white'}`}
+      >
         {char === " " ? "\u00A0" : char}
       </span>
     ));
@@ -73,37 +85,26 @@ const RebrandServices = () => {
 
   return (
     <LazyMotion features={domAnimation}>
-      <section ref={targetRef} className="relative h-[400vh] bg-[#050505] z-30">
-        <div className="sticky top-0 h-screen w-full overflow-hidden">
-          <m.div style={{ x }} className="flex h-full w-[300vw]">
+      <section ref={targetRef} className="relative h-[600vh] bg-[#050505]">
+        <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
+          <m.div 
+            ref={scrollContentRef}
+            style={{ x }} 
+            className="flex flex-nowrap h-full items-center px-[2vw]"
+          >
+            <div className="flex-shrink-0 w-screen h-screen flex items-center justify-center">
+              <h2 ref={serviceHeadingRef} className="text-[14vw] font-black tracking-tighter leading-none select-none">
+                {splitText("SERVICES")}<span className="text-orange-600 service-char">.</span>
+              </h2>
+            </div>
+
+            <div className="flex flex-nowrap items-center gap-2"> 
+              {services.map((service, index) => (
+                <CardWrapper key={service.id} service={service} index={index} />
+              ))}
+            </div>
             
-            {/* SCREEN 1: Intro with Animated Heading */}
-            <div className="w-screen h-full flex flex-col items-center justify-center">
-              <div className="overflow-hidden">
-                <h2 
-                  ref={serviceHeadingRef}
-                  className="text-8xl md:text-[14rem] font-black text-white tracking-tighter leading-none"
-                >
-                  {splitText("SERVICES")}
-                  <span className="text-orange-600 service-char inline-block">.</span>
-                </h2>
-              </div>
-            </div>
-
-            {/* SCREEN 2: Cards 1-3 */}
-            <div className="w-screen h-full flex items-center justify-center px-10 md:px-20">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-7xl">
-                {services.slice(0, 3).map((s, i) => <BigCard key={i} {...s} />)}
-              </div>
-            </div>
-
-            {/* SCREEN 3: Cards 4-6 */}
-            <div className="w-screen h-full flex items-center justify-center px-10 md:px-20">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-7xl">
-                {services.slice(3, 6).map((s, i) => <BigCard key={i} {...s} />)}
-              </div>
-            </div>
-
+            <div className="flex-shrink-0 w-[15vw]" />
           </m.div>
         </div>
       </section>
@@ -111,19 +112,72 @@ const RebrandServices = () => {
   );
 };
 
-const BigCard = ({ id, title, desc }: { id: string; title: string; desc: string }) => (
-  <m.div 
-    whileHover={{ scale: 1.02 }}
-    className="bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-3xl group hover:bg-white/10 transition-all h-[450px] flex flex-col justify-between"
-  >
-    <div>
-      <span className="text-6xl font-black text-white/5 group-hover:text-orange-600/20 transition-colors">{id}</span>
-      <h3 className="text-3xl font-bold text-white mt-4 mb-4 leading-tight">{title}</h3>
-      <p className="text-gray-400 text-lg leading-relaxed">{desc}</p>
+const CardWrapper = ({ service, index }: { service: typeof services[0], index: number }) => {
+  const ref = useRef(null);
+  const { scrollYProgress: itemProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  const rotateY = useTransform(itemProgress, [0, 0.5, 1], [30, 0, -30]);
+  const scale = useTransform(itemProgress, [0, 0.5, 1], [0.8, 1.02, 0.8]);
+  const opacity = useTransform(itemProgress, [0, 0.2, 0.5, 0.8, 1], [0.4, 1, 1, 1, 0.4]);
+  
+  const springScale = useSpring(scale, { stiffness: 120, damping: 20 });
+  const springRotate = useSpring(rotateY, { stiffness: 120, damping: 20 });
+
+  return (
+    <div 
+      ref={ref}
+      className="flex-shrink-0 w-[80vw] md:w-[40vw] lg:w-[26vw] flex justify-center items-center perspective-1500"
+    >
+      <m.div 
+        style={{ 
+          scale: springScale, 
+          rotateY: springRotate,
+          opacity,
+          transformStyle: "preserve-3d"
+        }} 
+        className="w-full flex justify-center"
+      >
+        <ServiceCard service={service} />
+      </m.div>
     </div>
-    <button className="flex items-center gap-4 text-orange-600 font-bold uppercase tracking-widest group-hover:gap-6 transition-all">
-      Read More <ArrowUpRight />
-    </button>
+  );
+};
+
+const ServiceCard = ({ service }: { service: typeof services[0] }) => (
+  <m.div 
+    whileHover={{ z: 30 }}
+    className="relative w-[85%] md:w-[90%] h-[420px] md:h-[480px] bg-gradient-to-br from-neutral-900/90 to-black border border-white/10 rounded-[2.5rem] p-8 flex flex-col justify-between overflow-hidden group shadow-xl"
+  >
+    <div className="absolute top-0 left-0 w-full h-[3px] bg-orange-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-center" />
+    
+    <div className="relative z-10" style={{ transform: "translateZ(20px)" }}>
+      <div className="flex justify-between items-start">
+        <span className="text-6xl font-black text-white/5 group-hover:text-orange-600/20 transition-colors duration-500">
+          {service.id}
+        </span>
+        <div className="w-12 h-12 rounded-xl border border-white/10 flex items-center justify-center group-hover:bg-orange-600 group-hover:border-orange-600 transition-all duration-500">
+          <ArrowUpRight className="text-white" size={20} />
+        </div>
+      </div>
+      
+      <h3 className="text-2xl md:text-3xl font-bold text-white mt-8 mb-4 group-hover:text-orange-500 transition-colors tracking-tight">
+        {service.title}
+      </h3>
+      <p className="text-gray-400 text-base leading-relaxed group-hover:text-gray-100 transition-colors line-clamp-4">
+        {service.desc}
+      </p>
+    </div>
+
+    <div className="relative z-10" style={{ transform: "translateZ(15px)" }}>
+      <button className="flex items-center gap-3 text-white font-bold uppercase tracking-widest text-[10px] bg-white/5 px-5 py-3 rounded-full hover:bg-orange-600 transition-all duration-300">
+        Discover <MoveRight size={14} className="text-orange-600 group-hover:text-white" />
+      </button>
+    </div>
+
+    <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-orange-600/5 rounded-full blur-[80px] group-hover:bg-orange-600/15 transition-all duration-1000" />
   </m.div>
 );
 

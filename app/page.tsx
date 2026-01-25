@@ -6,6 +6,8 @@ import dynamic from 'next/dynamic'
 // Inhe lazy load nahi karna chahiye taaki user ko page turant dikhe.
 import Hero from './components/home/hero'
 import AuthorityStrip from './components/home/authorityStrip'
+import DeepParallaxIndustries from './components/home/industriensWithParallax'
+import CarouselIndustries from './components/home/pinnedIndustries'
 
 // --- Lazy Imports (Below the Fold) ---
 // Inhe dynamic import karne se bundle size chota ho jata hai.
@@ -62,7 +64,9 @@ export default function Home() {
       <Services />
       <Results />
       <CaseStudies />
-      <Industries />
+      <Industries/>
+      <DeepParallaxIndustries/>
+      <CarouselIndustries/>
       <Testimonials />
       <PrimaryCTA />
       <BlogPreview />
