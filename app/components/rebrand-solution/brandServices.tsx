@@ -91,7 +91,7 @@ const BrandService: React.FC = () => {
   };
 
   return (
-    <section ref={containerRef} className="relative w-full h-screen overflow-hidden bg-black flex flex-col font-syne border-b border-white/5">
+    <section ref={containerRef} className="relative lg:pb-10 w-full h-full min-h-screen overflow-hidden bg-black flex flex-col font-syne border-b border-white/5">
       {/* Background Section */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image src="/serviceBg.webp" alt="BG" fill priority className="object-cover" />
@@ -112,7 +112,7 @@ const BrandService: React.FC = () => {
           
           {/* IMAGE CARD */}
           <div className="w-full lg:w-auto flex items-center justify-center z-20">
-            <div className="relative w-full max-w-[240px] md:max-w-[340px] lg:w-[320px] lg:h-[400px] aspect-[4/5] lg:aspect-auto overflow-hidden rounded-3xl border border-white/10 shadow-2xl bg-black">
+            <div className="relative w-full max-w-[240px] md:max-w-[340px] lg:w-[320px] lg:h-[400px] aspect-[4/5] lg:aspect-auto overflow-hidden rounded-3xl border border-white/10 shadow-2xl bg-black ">
               {SERVICES.map((service, index) => (
                 <div key={service.id} className="absolute inset-0 transition-transform duration-700 ease-in-out"
                   style={{ zIndex: index + 1, transform: activeId > index ? "translateY(0)" : "translateY(100%)" }}>
