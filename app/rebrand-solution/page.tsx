@@ -11,7 +11,7 @@ const Rebrand = () => {
         <RebrandHero/>
         <RebrandServices/>
         <BrandService/>
-        <div className='bg-blue-400 h-screen' ></div>
+        {/* <div className='bg-blue-400 h-screen' ></div> */}
     </div>
   )
 }

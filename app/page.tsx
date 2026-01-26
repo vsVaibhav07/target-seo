@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic'
 import Hero from './components/home/hero'
 import AuthorityStrip from './components/home/authorityStrip'
-import BlogPreview from './components/home/blogPreview'
+
 
 // Dynamic Imports
 const WhyUs = dynamic(() => import('./components/home/whyUs'), {
