@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic'
 import Hero from './components/home/hero'
 import AuthorityStrip from './components/home/authorityStrip'
+import BlogPreview from './components/home/blogPreview'
 
 // Dynamic Imports
 const WhyUs = dynamic(() => import('./components/home/whyUs'), {
@@ -10,6 +11,10 @@ const WhyUs = dynamic(() => import('./components/home/whyUs'), {
   ssr: true 
 })
 
+const BlogPreview = dynamic(() => import('./components/home/blogPreview'), {
+  loading: () => <div className="h-screen bg-white" />,
+  ssr: true 
+})
 const Services = dynamic(() => import('./components/home/services'), {
   loading: () => <div className="h-screen bg-white" />,
   ssr: true
@@ -63,6 +68,7 @@ export default function Home() {
       <section className="relative z-40 bg-white">
         <Testimonials />
         <PrimaryCTA />
+        <BlogPreview/>
       </section>
     </main>
   )
