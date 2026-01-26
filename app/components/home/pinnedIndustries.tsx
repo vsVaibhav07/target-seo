@@ -63,7 +63,7 @@ export default function CarouselIndustries() {
               >
                 Our Expertise
               </m.span>
-              <h2 className="text-7xl md:text-8xl font-black text-slate-900 leading-[0.9]">
+              <h2 className="text-7xl font-(family-name:--font-dancing) md:text-8xl font-black text-slate-900 leading-[0.9]">
                 Who We <br/>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-300">
                   Empower

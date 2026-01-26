@@ -5,6 +5,8 @@ import { LazyMotion, domMax } from 'framer-motion'
 
 import ScrollProvider from './components/common/scrollProvider'
 import { Dancing_Script,Space_Grotesk } from 'next/font/google'
+import Header from './components/common/header'
+import Footer from './components/common/footer'
 
 const dancingScript = Dancing_Script({
   subsets: ['latin'],
@@ -41,9 +43,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <LazyMotion features={domMax}>
           <ScrollProvider>
-            {/* <Header /> */}
+            <Header />
             <main>{children}</main>
-            {/* <Footer /> */}
+            <Footer />
           </ScrollProvider>
         </LazyMotion>
       </body>

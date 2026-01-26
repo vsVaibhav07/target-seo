@@ -64,9 +64,9 @@ export default function Home() {
       <Services />
       <Results />
       <CaseStudies />
-      <Industries/>
-      <DeepParallaxIndustries/>
-      <CarouselIndustries/>
+      {/* <Industries/> */}
+      {/* <DeepParallaxIndustries/> */}
+      {/* <CarouselIndustries/> */}
       <Testimonials />
       <PrimaryCTA />
       <BlogPreview />
