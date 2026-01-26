@@ -7,7 +7,7 @@ import BrandService from '../components/rebrand-solution/brandServices'
 const Rebrand = () => {
   return (
     <div >
-        <Navbar/>
+        {/* <Navbar/> */}
         <RebrandHero/>
         <RebrandServices/>
         <BrandService/>
