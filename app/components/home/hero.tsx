@@ -83,7 +83,7 @@ export default function Hero() {
   ];
 
   return (
-    <section ref={containerRef} className="relative h-[300vh] md:h-[400vh] bg-black overflow-clip">
+    <section ref={containerRef} className="relative h-[300vh] md:h-[400vh] pt-28 bg-black overflow-clip">
       
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center py-10">
         

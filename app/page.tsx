@@ -1,75 +1,69 @@
 "use client"
 
 import dynamic from 'next/dynamic'
-
-// --- Standard Imports (Critical Path / Above the Fold) ---
-// Inhe lazy load nahi karna chahiye taaki user ko page turant dikhe.
 import Hero from './components/home/hero'
 import AuthorityStrip from './components/home/authorityStrip'
-import DeepParallaxIndustries from './components/home/industriensWithParallax'
-import CarouselIndustries from './components/home/pinnedIndustries'
 
-// --- Lazy Imports (Below the Fold) ---
-// Inhe dynamic import karne se bundle size chota ho jata hai.
-
+// Dynamic Imports
 const WhyUs = dynamic(() => import('./components/home/whyUs'), {
-  loading: () => <div className="min-h-[400px] bg-slate-900/10 animate-pulse" />,
+  loading: () => <div className="h-screen bg-[#020617]" />,
   ssr: true 
 })
 
 const Services = dynamic(() => import('./components/home/services'), {
-  loading: () => <div className="min-h-[600px] bg-slate-900/10 animate-pulse" />,
+  loading: () => <div className="h-screen bg-white" />,
   ssr: true
 })
 
 const Results = dynamic(() => import('./components/home/result'), {
-  loading: () => <div className="min-h-[500px] bg-slate-900/10 animate-pulse" />,
+  loading: () => <div className="h-screen bg-[#020617]" />,
   ssr: true
 })
 
 const CaseStudies = dynamic(() => import('./components/home/caseStudy'), {
-  loading: () => <div className="min-h-[600px] bg-slate-900/10 animate-pulse" />,
-  ssr: true
-})
-
-const Industries = dynamic(() => import('./components/home/industrious'), {
-  loading: () => <div className="min-h-[400px] bg-slate-900/10 animate-pulse" />,
+  loading: () => <div className="h-screen bg-[#020617]" />,
   ssr: true
 })
 
 const Testimonials = dynamic(() => import('./components/home/testimonials'), {
-  loading: () => <div className="min-h-[500px] bg-slate-900/10 animate-pulse" />,
-  ssr: false // Swiper/Sliders ke liye aksar SSR false behtar rehta hai
+  ssr: false 
 })
 
 const PrimaryCTA = dynamic(() => import('./components/home/primaryCTA'), {
-  loading: () => <div className="min-h-[300px] bg-slate-900/10 animate-pulse" />,
-  ssr: true
-})
-
-const BlogPreview = dynamic(() => import('./components/home/blogPreview'), {
-  loading: () => <div className="min-h-[500px] bg-slate-900/10 animate-pulse" />,
   ssr: true
 })
 
 export default function Home() {
   return (
-    <main>
-      {/* 1. Immediate Load */}
-      <Hero />
-      <AuthorityStrip />
+    <main className="relative bg-[#020617]">
+      {/* 1. HERO: Top Layer */}
+      <section className="relative z-10">
+        <Hero />
+        <AuthorityStrip />
+      </section>
 
-      {/* 2. Lazy Loaded Sections */}
-      <WhyUs />
-      <Services />
-      <Results />
-      <CaseStudies />
-      {/* <Industries/> */}
-      {/* <DeepParallaxIndustries/> */}
-      {/* <CarouselIndustries/> */}
-      <Testimonials />
-      <PrimaryCTA />
-      <BlogPreview />
+      {/* 2. WHY US: Dark Section (Base Layer) */}
+      <section className="relative z-0">
+        <WhyUs />
+      </section>
+
+      {/* 3. SERVICES: Light Section (Slides OVER WhyUs) 
+          Using shadow and rounded corners to show depth */}
+      <section className="relative z-20 -mt-20 shadow-[0_-50px_100px_rgba(0,0,0,0.5)] rounded-t-[3rem] lg:rounded-t-[5rem] overflow-hidden">
+        <Services />
+      </section>
+
+     
+      {/* 5. CASE STUDIES: Overlapping effect usually built-in inside the component */}
+      <section className="relative z-30 mt-20">
+        <CaseStudies />
+      </section>
+
+      {/* 6. TESTIMONIALS & CTA: Floating on top of the final parallax */}
+      <section className="relative z-40 bg-white">
+        <Testimonials />
+        <PrimaryCTA />
+      </section>
     </main>
   )
 }

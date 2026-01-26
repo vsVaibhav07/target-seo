@@ -12,10 +12,10 @@ interface AnimatedHeadingProps {
   badgeText?: string
 }
 
-export default function SectionTitle({ 
-  text, 
-  className = "", 
-  badgeText 
+export default function SectionTitle({
+  text,
+  className = "",
+  badgeText
 }: AnimatedHeadingProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const headingRef = useRef<HTMLHeadingElement>(null)
@@ -64,8 +64,8 @@ export default function SectionTitle({
       )}
 
       {/* Animated Heading */}
-      <h2 
-        ref={headingRef} 
+      <h2
+        ref={headingRef}
         className="text-5xl font-(family-name:--font-dancing) sm:text-6xl lg:text-7xl font-black leading-tight text-white"
       >
         {text.split(' ').map((word, wordIdx) => (
@@ -74,9 +74,10 @@ export default function SectionTitle({
               <span
                 key={charIdx}
                 className="char inline-block"
-                style={{ 
-                  // Every 5th letter gets orange color like your original code
-                  color: (wordIdx + charIdx) % 5 === 0 ? '#fb923c' : 'white' 
+                style={{
+                  color: (wordIdx + charIdx) % 5 === 0 || ['s', 'e', 'o'].includes(char.toLowerCase())
+                    ? '#fb923c'
+                    : 'white'
                 }}
               >
                 {char}

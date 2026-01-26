@@ -8,7 +8,6 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 // Sub-components
-import DeepParallaxIndustries from './industriensWithParallax'
 import CarouselIndustries from './pinnedIndustries'
 import SectionTitle from '../common/sectionTitle'
 
@@ -78,9 +77,10 @@ export default function CaseStudies() {
   const img3Y = useTransform(scrollYProgress, [0.65, 0.9], ['100%', '0%'])
 
   return (
-    <div className="relative bg-[#020617]">
-      <div ref={containerRef} className="relative h-[250vh] lg:h-[1500vh]">
-        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col lg:grid lg:grid-cols-2">
+    <div className="relative bg-[radial-gradient(circle_at_30%_30%,rgba(249,115,22,0.1),transparent_50%)] bg-[#020617]">
+      <div ref={containerRef} className="relative  h-[250vh] lg:h-[1500vh]">
+        <SectionTitle className='  bg-[radial-gradient(circle_at_30%_30%,rgba(249,115,22,0.1),transparent_50%)]  text-center' text='Case Study' />
+        <div className="sticky top-10 h-screen w-full overflow-hidden flex flex-col lg:grid lg:grid-cols-2">
           
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(249,115,22,0.1),transparent_50%)]" />
@@ -103,7 +103,7 @@ export default function CaseStudies() {
           </div>
 
           <div className="relative h-[55vh] lg:h-[120%]  overflow-hidden px-6 md:px-20 z-10">
-            <motion.div style={{ y: textY }} className="flex pb-20 lg:pb-40  flex-col">
+            <motion.div style={{ y: textY }} className="flex pb-20 lg:pb-60  flex-col">
               {cases.map((item, index) => (
                 <section key={index} className="flex h-[55vh] my-4 lg:h-screen flex-col justify-center py-8 lg:py-20">
                   
@@ -138,7 +138,7 @@ export default function CaseStudies() {
       <section className="relative z-40 lg:-mt-[40vh] min-h-screen bg-white shadow-[0_-50px_100px_rgba(0,0,0,0.5)]">
         <div className="relative z-50">
            <CarouselIndustries />
-           <DeepParallaxIndustries />
+           {/* <DeepParallaxIndustries /> */}
         </div>
       </section>
     </div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Facebook, Twitter, Linkedin } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,10 +11,18 @@ export default function Footer() {
         
         {/* Brand Section */}
         <div className="flex flex-col items-start space-y-4">
-          <Link href="/" className="inline-block">
-            <span className="font-serif bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-blue-100 to-blue-400 text-2xl font-extrabold tracking-tight">
-              Target SEO Solutions
-            </span>
+          {/* 1. Logo Container Fix: Humne width ko adjust kiya aur -ml-4 add kiya agar image mein internal padding ho */}
+          <Link href="/" className="relative group -ml-2 lg:-ml-4">
+            <div className="relative w-[180px] h-[70px] lg:w-[280px] lg:h-[90px]">
+              <Image 
+                src="/logo3-transparent.png" 
+                fill 
+                priority 
+                alt='Logo'
+                // 2. object-left add kiya taaki image container ke left se start ho
+                className="object-contain object-left brightness-100"
+              />
+            </div>
           </Link>
           <p className="text-slate-400 text-sm leading-relaxed max-w-[240px]">
             ROI-driven SEO strategies for scalable growth and dominant market presence.
@@ -24,9 +33,9 @@ export default function Footer() {
         <div className="flex flex-col space-y-4">
           <h4 className="font-bold text-white text-sm uppercase tracking-widest">Quick Links</h4>
           <nav className="flex flex-col space-y-2 text-slate-400 text-sm">
-            <Link href="/about" className="hover:text-blue-400 transition-colors w-fit">About Us</Link>
-            <Link href="/services" className="hover:text-blue-400 transition-colors w-fit">Our Services</Link>
-            <Link href="/contact" className="hover:text-blue-400 transition-colors w-fit">Contact</Link>
+            <Link href="/about" className="hover:text-orange-400 transition-colors w-fit">About Us</Link>
+            <Link href="/services" className="hover:text-orange-400 transition-colors w-fit">Our Services</Link>
+            <Link href="/contact" className="hover:text-orange-400 transition-colors w-fit">Contact</Link>
           </nav>
         </div>
 
@@ -59,7 +68,7 @@ export default function Footer() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-lg bg-white/5 text-slate-400 hover:text-white hover:bg-blue-600 transition-all duration-300"
+                className="p-2.5 rounded-lg bg-white/5 text-slate-400 hover:text-white hover:bg-orange-500 transition-all duration-300"
               >
                 <Icon size={18} />
                 <span className="sr-only">{label}</span>

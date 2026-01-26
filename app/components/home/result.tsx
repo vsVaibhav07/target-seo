@@ -144,7 +144,7 @@ export default function ResultsCinematic() {
         </div>
 
         {/* Right Side: Orbiting Stats */}
-        <div className="relative flex items-center justify-center h-[500px] scale-75 md:scale-100 ">
+        <div className="relative flex items-center justify-center mb-10 h-[500px] scale-75 md:scale-100 ">
           {/* Visual Outline Circle */}
           <div 
             className="absolute rounded-full border border-white/10 shadow-[0_0_80px_rgba(251,146,60,0.05)]" 
