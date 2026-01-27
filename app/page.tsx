@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic'
 import Hero from './components/home/hero'
 import AuthorityStrip from './components/home/authorityStrip'
+import HeroExamples from './components/home/heroexamples'
 
 
 // Dynamic Imports
@@ -43,7 +44,8 @@ export default function Home() {
     <main className="relative bg-[#020617]">
       {/* 1. HERO: Top Layer */}
       <section className="relative z-10">
-        <Hero />
+        <HeroExamples/>
+        {/* <Hero /> */}
         <AuthorityStrip />
       </section>
 
