@@ -19,7 +19,7 @@ const logos = [
 
 export default function AuthorityStrip() {
   return (
-    <section className="relative py-12 bg-[#020617] grayscale-25 overflow-hidden flex flex-col justify-center border-y border-white/5">
+    <section className="relative py-12 bg-[#020617] grayscale-30 overflow-hidden flex flex-col justify-center border-b border-white/5">
       
       {/* Magical Background Glows */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-64 h-24 bg-blue-500/20 blur-[100px] rounded-full animate-pulse" />

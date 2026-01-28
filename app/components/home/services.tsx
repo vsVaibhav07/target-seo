@@ -66,7 +66,7 @@ export default function Services() {
 
   return (
     <>
-      <section ref={containerRef} className="relative md:h-[300vh] lg:h-[180%] bg-white">
+      <section ref={containerRef} className="relative md:h-[300vh] lg:h-[180%] bg-slate-50 ">
         {/* Pinned Sticky Layer */}
         <div className="sticky top-0 flex min-h-screen w-full flex-col justify-center overflow-hidden py-10">
           <div className="container mx-auto px-6 lg:px-20">
@@ -104,15 +104,15 @@ export default function Services() {
               {services.map((service, i) => {
                 // Magical float effect: each card moves at different speed
                 const cardY = useTransform(scrollYProgress, [0, 1], [0, (i + 1) * -70])
-                const cardScale = useTransform(scrollYProgress, [0.85, 1], [1, 0.9])
-                const opacity = useTransform(scrollYProgress, [0.9, 1], [1, 0])
+                const cardScale = useTransform(scrollYProgress, [0.5, 1], [1, 0.75])
+                const opacity = useTransform(scrollYProgress, [0.9, 1], [1, 0.8])
 
                 return (
                   <m.div key={i} style={{ y: cardY, scale: cardScale, opacity }}>
-                    <Link href="/services" className="group relative block aspect-[3/4] sm:aspect-square lg:aspect-[4/5] rounded-3xl m-4 overflow-hidden bg-slate-100 shadow-2xl transition-all border border-slate-100">
+                    <Link href="/services" className="group relative block aspect-[3/4] sm:aspect-square lg:aspect-[4/5] rounded-3xl m-4 overflow-hidden  shadow-2xl transition-all border border-slate-100">
                       <img 
                         src={service.img} 
-                        className="absolute inset-0 w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000" 
+                        className="absolute inset-0 w-full h-full object-cover  opacity-60  group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000" 
                         alt={service.title}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/10 to-transparent" />
