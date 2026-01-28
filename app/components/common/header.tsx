@@ -48,10 +48,10 @@ export default function MagicalHeader() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between w-full">
           <Link
             href="/"
-            className="relative w-[140px] h-[50px] lg:w-[260px] lg:h-[80px]"
+            className="relative w-[140px] h-[50px] lg:w-[260px] lg:h-[100px]"
           >
             <Image
-              src="/logo3-transparent.png"
+              src="/new-logot.png"
               fill
               priority
               alt="Logo"
@@ -118,7 +118,7 @@ export default function MagicalHeader() {
                 <Link href="/" className="relative group -ml-2 lg:-ml-4">
                   <div className="relative w-[180px] h-[70px] lg:w-[280px] lg:h-[90px]">
                     <Image
-                      src="/logo3-transparent.png"
+                      src="/logo.png"
                       fill
                       priority
                       alt="Logo"
