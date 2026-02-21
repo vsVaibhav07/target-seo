@@ -1,0 +1,42 @@
+{
+  "title": "Performance",
+  "subtitle": "Marketing",
+  "heroDesc": "Stop wasting budget on 'maybe'. We execute high-precision, data-backed campaigns that turn every dollar of ad spend into a measurable revenue engine. Scale fast, scale smart.",
+  "deliverables": [
+    {
+      "title": "Paid Search (SEM)",
+      "desc": "Capturing high-intent users exactly when they are ready to buy.",
+      "list": ["Google Ads Mastery", "Keyword Arbitrage", "Auction Dominance"],
+      "icon": "💰"
+    },
+    {
+      "title": "Social Advertising",
+      "desc": "Disruptive ad creatives designed to stop the scroll and convert.",
+      "list": ["Meta Ads Scaling", "LinkedIn B2B Ops", "TikTok UGC Strategy"],
+      "icon": "📱"
+    },
+    {
+      "title": "Programmatic & Display",
+      "desc": "Omnichannel presence that follows your lead across the web.",
+      "list": ["Retargeting Funnels", "Behavioral Targeting", "Dynamic Creative Ops"],
+      "icon": "🎯"
+    },
+    {
+      "title": "Conversion Ops (CRO)",
+      "desc": "Optimizing the post-click experience to squeeze more value.",
+      "list": ["Lander A/B Testing", "Heatmap Analysis", "Checkout Tuning"],
+      "icon": "📊"
+    }
+  ],
+  "process": [
+    { "step": "01", "title": "Audit & Attribution", "desc": "Tracking everything. We fix your pixel and tracking setup to ensure every conversion is attributed correctly." },
+    { "step": "02", "title": "Funnel Architecture", "desc": "Building cold, warm, and hot audience segments to ensure no lead is left behind." },
+    { "step": "03", "title": "Creative Deployment", "desc": "Launching high-impact visuals and copy that are engineered for high Click-Through Rates (CTR)." },
+    { "step": "04", "title": "Aggressive Scaling", "desc": "Identifying 'Winning' ads and pumping budget into them while cutting the losers instantly." },
+    { "step": "05", "title": "ROI Reporting", "desc": "Weekly transparent reports focusing on ROAS (Return on Ad Spend) and Customer Acquisition Cost (CAC)." }
+  ],
+  "faqs": [
+    { "q": "How much ad spend do I need?", "a": "We recommend a minimum budget that allows for statistically significant testing, typically starting from $1,000/month." },
+    { "q": "Do you guarantee results?", "a": "We guarantee 'Performance'—our fee is often tied to your growth, ensuring our goals are perfectly aligned with yours." }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "title": "Answer Engine",
+  "subtitle": "Optimization",
+  "heroDesc": "Stop fighting for clicks; start winning the answer. We dominate Voice Search and Featured Snippets by transforming your content into clear, authoritative direct answers.",
+  "deliverables": [
+    {
+      "title": "Zero-Click Mastery",
+      "desc": "Winning Position Zero through hyper-structured data and snippets.",
+      "list": ["Snippet Hijacking", "Table Optimization", "Listicle Crafting"],
+      "icon": "🏆"
+    },
+    {
+      "title": "Voice Search Prep",
+      "desc": "Optimizing for conversational queries on Alexa, Siri, and Google Home.",
+      "list": ["Long-tail Intent", "Natural Language", "FAQ Schema"],
+      "icon": "🎙️"
+    },
+    {
+      "title": "Semantic Authority",
+      "desc": "Building a topical map that makes you the ultimate truth in your niche.",
+      "list": ["Question Research", "Direct Definitions", "Expert Bylines"],
+      "icon": "📖"
+    },
+    {
+      "title": "Schema Domination",
+      "desc": "Deep technical markup to feed search engines explicit answers.",
+      "list": ["Speakable Schema", "How-to Markup", "Dataset Tags"],
+      "icon": "⚡"
+    }
+  ],
+  "process": [
+    { "step": "01", "title": "Question Mining", "desc": "Identifying the exact questions your audience is asking through conversational data analysis." },
+    { "step": "02", "title": "Snippet Engineering", "desc": "Re-structuring your best content into 'Answer Blocks' that search engines can easily extract." },
+    { "step": "03", "title": "Schema Deployment", "desc": "Implementing advanced JSON-LD to communicate answers directly to search crawlers." },
+    { "step": "04", "title": "Conversational Tuning", "desc": "Adjusting content tone to match how humans naturally speak, ensuring high voice search hit rates." },
+    { "step": "05", "title": "Accuracy Audit", "desc": "Ensuring your answers are the most up-to-date and factually correct to maintain 'Top Answer' status." }
+  ],
+  "faqs": [
+    { "q": "Will AEO reduce my website traffic?", "a": "While it increases 'Zero-click' results, it builds massive brand trust and ensures you are the only brand mentioned in voice results." },
+    { "q": "Does AEO help with Mobile SEO?", "a": "Absolutely. Most mobile searches are question-based, and AEO ensures you capture those top spots." }
+  ]
+}

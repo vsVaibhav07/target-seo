@@ -1,0 +1,42 @@
+{
+  "title": "Social Media",
+  "subtitle": "Optimization",
+  "heroDesc": "Dominate the social feed with algorithmic precision. We turn your social profiles into high-converting assets through data-driven storytelling.",
+  "deliverables": [
+    {
+      "title": "Profile Authority",
+      "desc": "Structuring profiles for search and brand trust.",
+      "list": ["Bio Optimization", "Visual Identity", "Keyword Integration"],
+      "icon": "📱"
+    },
+    {
+      "title": "Content Sprints",
+      "desc": "High-frequency, high-engagement creative assets.",
+      "list": ["Viral Hooks", "Reels/Shorts Strategy", "Trend Jacking"],
+      "icon": "🔥"
+    },
+    {
+      "title": "Engagement Ops",
+      "desc": "Activating your community to please the algorithm.",
+      "list": ["Comment Mgmt", "Signal Boosting", "Audience Mining"],
+      "icon": "💬"
+    },
+    {
+      "title": "Analytics Dashboard",
+      "desc": "Tracking sentiment and conversion attribution.",
+      "list": ["Click Tracking", "Sentiment Analysis", "ROI Reporting"],
+      "icon": "📊"
+    }
+  ],
+  "process": [
+    { "step": "01", "title": "Brand Persona", "desc": "Defining your unique voice and visual language to stand out in a crowded feed." },
+    { "step": "02", "title": "Algorithm Research", "desc": "Analyzing current platform trends (TikTok, IG, LinkedIn) to see what content is currently 'pushed'." },
+    { "step": "03", "title": "Content Production", "desc": "Creating 30 days of high-quality assets tailored to your audience’s specific pain points." },
+    { "step": "04", "title": "Distribution", "desc": "Strategic posting during peak engagement hours with community management to spark dialogue." },
+    { "step": "05", "title": "Optimization", "desc": "Analyzing top-performing posts to iterate and double down on what works." }
+  ],
+  "faqs": [
+    { "q": "Does SMO help my SEO?", "a": "Yes. Social signals and increased brand searches are significant indirect ranking factors for Google." },
+    { "q": "Which platforms do you cover?", "a": "We optimize for Instagram, LinkedIn, TikTok, and X (Twitter) based on where your customers live." }
+  ]
+}

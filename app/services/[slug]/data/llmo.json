@@ -1,0 +1,42 @@
+{
+  "title": "LLM Search",
+  "subtitle": "Optimization",
+  "heroDesc": "Ensure your brand is the 'Recommended Solution' in ChatGPT, Claude, and Gemini. We optimize your data for the Generative AI era.",
+  "deliverables": [
+    {
+      "title": "Dataset Seeding",
+      "desc": "Placing brand data where LLMs crawl most.",
+      "list": ["Wiki Optimization", "Niche Forums", "PR Distribution"],
+      "icon": "🧠"
+    },
+    {
+      "title": "Semantic Clarity",
+      "desc": "Making your content easily digestible for AI.",
+      "list": ["Schema 3.0", "NLP Structuring", "Clear Attributes"],
+      "icon": "📖"
+    },
+    {
+      "title": "Citation Strength",
+      "desc": "Increasing the frequency of AI 'Mentions'.",
+      "list": ["Expert Roundups", "Research Papers", "Case Studies"],
+      "icon": "🖇️"
+    },
+    {
+      "title": "Sentiment Control",
+      "desc": "Ensuring AI describes your brand positively.",
+      "list": ["Review Synthesis", "Brand Correction", "Neutrality Bias"],
+      "icon": "⚖️"
+    }
+  ],
+  "process": [
+    { "step": "01", "title": "AI Audit", "desc": "We query 10+ LLMs to see how they currently perceive and describe your brand." },
+    { "step": "02", "title": "Gap Discovery", "desc": "Identifying why competitors are cited as 'Top Results' in AI chats while you are missing." },
+    { "step": "03", "title": "Entity Association", "desc": "Linking your brand to key industry keywords within the global Knowledge Graph." },
+    { "step": "04", "title": "PR Injection", "desc": "Pushing high-authority data points into AI training paths and live-web search indices." },
+    { "step": "05", "title": "Response Tracking", "desc": "Monitoring the evolution of AI-generated responses to ensure brand dominance." }
+  ],
+  "faqs": [
+    { "q": "What is LLMO?", "a": "Large Language Model Optimization ensures your business is the primary answer provided by AI chatbots like ChatGPT." },
+    { "q": "Is this different from SEO?", "a": "Yes. While SEO focuses on clicks, LLMO focuses on 'Citational Authority' and 'Model Recommendation'." }
+  ]
+}

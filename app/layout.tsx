@@ -7,6 +7,7 @@ import ScrollProvider from './components/common/scrollProvider'
 import { Dancing_Script,Space_Grotesk } from 'next/font/google'
 import Header from './components/common/header'
 import Footer from './components/common/footer'
+import PageTransition from './components/common/page-transition'
 
 const dancingScript = Dancing_Script({
   subsets: ['latin'],
@@ -44,7 +45,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <LazyMotion features={domMax}>
           <ScrollProvider>
             <Header />
-            <main>{children}</main>
+            <PageTransition/>
+            <main className='min-h-screen'>{children}</main>
             <Footer />
           </ScrollProvider>
         </LazyMotion>

@@ -1,0 +1,42 @@
+{
+  "title": "Topical",
+  "subtitle": "Authority",
+  "heroDesc": "Become the definitive voice in your industry. We create high-intent content that ranks, educates, and converts strangers into advocates.",
+  "deliverables": [
+    {
+      "title": "Cluster Strategy",
+      "desc": "Dominating niches through interconnected content.",
+      "list": ["Pillar Pages", "Hub & Spoke", "Internal Logic"],
+      "icon": "🏗️"
+    },
+    {
+      "title": "Thought Leadership",
+      "desc": "Executive-level content that builds trust.",
+      "list": ["Whitepapers", "Expert Op-Eds", "Original Research"],
+      "icon": "✍️"
+    },
+    {
+      "title": "Conversion Copy",
+      "desc": "Moving users from 'Awareness' to 'Sale'.",
+      "list": ["Landing Pages", "Email Funnels", "Sales Scripts"],
+      "icon": "💰"
+    },
+    {
+      "title": "Content Refresh",
+      "desc": "Revitalizing old content for modern rankings.",
+      "list": ["Decay Analysis", "Stat Updates", "UX Refactoring"],
+      "icon": "🔄"
+    }
+  ],
+  "process": [
+    { "step": "01", "title": "Keyword Intent", "desc": "Classifying keywords by 'Informational' vs 'Transactional' to map the buyer journey." },
+    { "step": "02", "title": "Content Blueprint", "desc": "A structural outline for every piece to ensure it hits all semantic SEO requirements." },
+    { "step": "03", "title": "Production", "desc": "Crafting deep-dive articles that are better than anything currently on page 1 of Google." },
+    { "step": "04", "title": "Optimization", "desc": "Applying NLP techniques and readability scores to ensure maximum user retention." },
+    { "step": "05", "title": "Promotion", "desc": "Distributing content through newsletters and social channels to gain initial 'Heat Signals'." }
+  ],
+  "faqs": [
+    { "q": "How often should we publish?", "a": "Consistency beats quantity. We recommend 2-4 high-authority pieces per month over daily low-quality posts." },
+    { "q": "Do you provide images?", "a": "Yes, all content comes with custom graphics and optimized media to boost engagement." }
+  ]
+}

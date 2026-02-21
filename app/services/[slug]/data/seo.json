@@ -1,0 +1,42 @@
+{
+  "title": "Search Engine",
+  "subtitle": "Optimization",
+  "heroDesc": "We transform organic search into your most aggressive revenue channel through semantic authority and technical dominance. Stop chasing algorithms; start leading them.",
+  "deliverables": [
+    {
+      "title": "On-Page SEO",
+      "desc": "Optimizing every pixel and word for maximum relevance.",
+      "list": ["Entity Tuning", "Intent Mapping", "Meta Architecture"],
+      "icon": "🎯"
+    },
+    {
+      "title": "Technical SEO",
+      "desc": "Building a lightning-fast, crawlable digital foundation.",
+      "list": ["Core Web Vitals", "Schema Injection", "Indexing Ops"],
+      "icon": "⚙️"
+    },
+    {
+      "title": "Off-Page SEO",
+      "desc": "Scaling your authority through elite digital PR.",
+      "list": ["Link Acquisition", "Brand Mentions", "Trust Signals"],
+      "icon": "💎"
+    },
+    {
+      "title": "Local SEO",
+      "desc": "Dominating geographical search and map results.",
+      "list": ["GMB Mastery", "Local Citations", "Review Velocity"],
+      "icon": "📍"
+    }
+  ],
+  "process": [
+    { "step": "01", "title": "Discovery & Audit", "desc": "A complete post-mortem of your site. We identify technical bottlenecks, content gaps, and competitor vulnerabilities." },
+    { "step": "02", "title": "Strategy Mapping", "desc": "Designing a 12-month roadmap focused on 'Topical Clusters' to build unmatched domain authority." },
+    { "step": "03", "title": "Execution Phase", "desc": "On-page optimization and technical fixes are deployed to ensure Google sees your site as the 'Primary Source'." },
+    { "step": "04", "title": "Authority Scaling", "desc": "High-quality link building and content pushes to move keywords from page 2 to top 3 positions." },
+    { "step": "05", "title": "Growth Analysis", "desc": "Continuous monitoring and refinement based on real-time ranking data and conversion metrics." }
+  ],
+  "faqs": [
+    { "q": "How long before I see results?", "a": "SEO is a marathon. Typically, rankings and traffic movement begin within 3-6 months, with peak ROI at 12 months." },
+    { "q": "Do you use safe methods?", "a": "We strictly follow 'White-Hat' sustainable SEO guidelines to ensure long-term protection from algorithm updates." }
+  ]
+}

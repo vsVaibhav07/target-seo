@@ -28,7 +28,7 @@ export default function MagicalHeader() {
     [0, 50],
     ["rgba(2, 6, 23, 0)", "rgba(2, 6, 23, 0.95)"],
   );
-  const padding = useTransform(scrollY, [0, 50], ["24px", "12px"]);
+  const padding = useTransform(scrollY, [0, 50], ["6px", "12px"]);
   const maxWidth = useTransform(scrollY, [0, 50], ["100%", "90%"]);
   const borderRadius = useTransform(scrollY, [0, 50], ["0px", "100px"]);
 
@@ -118,7 +118,7 @@ export default function MagicalHeader() {
                 <Link href="/" className="relative group -ml-2 lg:-ml-4">
                   <div className="relative w-[180px] h-[70px] lg:w-[280px] lg:h-[90px]">
                     <Image
-                      src="/logo.png"
+                      src="/new-logot.png"
                       fill
                       priority
                       alt="Logo"

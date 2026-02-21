@@ -4,7 +4,7 @@
 
 :root {
   --primary: #0f172a;
-  --accent: #f97316;
+  --accent: #D4AF37;
   --dark: #020617;
   --light: #f8fafc;
   --muted: #475569;
@@ -52,3 +52,25 @@ body {
 .text-outline {
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
 }
+
+.font-dancing{
+  font-family: var(--font-dancing);
+}
+
+.wavy-top {
+  --mask:
+    radial-gradient(34.99px at 50% 48px,#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%,
+    radial-gradient(34.99px at 50% -18px,#0000 99%,#000 101%) 50% 30px/120px 100% repeat-x;
+  -webkit-mask: var(--mask);
+          mask: var(--mask);
+}
+
+.wavy-bottom {
+  --mask: 
+    radial-gradient(34.99px at 50% calc(100% - 48px), #000 99%, #0000 101%) calc(50% - 60px) 100%/120px 100% repeat-x,
+    radial-gradient(34.99px at 50% calc(100% + 18px), #0000 99%, #000 101%) 50% calc(100% - 30px)/120px 100% repeat-x;
+  
+  -webkit-mask: var(--mask);
+          mask: var(--mask);
+}
+

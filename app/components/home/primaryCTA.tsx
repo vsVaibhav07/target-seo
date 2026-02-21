@@ -1,140 +1,129 @@
-'use client'
+"use client";
 
-import { Variants,m } from 'framer-motion'
+import { Variants, m } from "framer-motion";
 
 export default function PrimaryCTA() {
-  const headingText = "Get Your FREE SEO Audit & Growth Plan"
-  const words = headingText.split(" ")
+  const headingTitle = "Ready to Lead?";
+  const headingSubtitle = "Get Your FREE Growth Plan";
+  const words = headingSubtitle.split(" ");
 
-  // Animation Variants for Container
-  const containerVariants:Variants = {
-    hidden: { opacity: 0 },
+  const containerVariants: Variants = {
+    hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
+      y: 0,
       transition: {
         staggerChildren: 0.1,
         delayChildren: 0.2,
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1],
       },
     },
-  }
+  };
 
-  // Word-by-word animation variants
-  const wordVariants:Variants = {
-    hidden: { y: 25, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: [0.33, 1, 0.68, 1],
-      },
-    },
-  }
-
-  const textItemVariants:Variants = {
+  const textItemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: [0.33, 1, 0.68, 1],
-      },
+      transition: { duration: 0.8, ease: "easeOut" },
     },
-  }
+  };
 
   return (
-    <section className="relative py-32 bg-gradient-to-br from-[#f97316] via-[#fb923c] to-[#fdba74]">
-      <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-white rounded-full blur-[120px]" />
-      </div>
+    <section className="relative py-32 bg-[#020617] overflow-hidden">
+      {/* Decorative Glows for the Dark Background */}
+      <div className="absolute top-0 left-0 w-[40%] h-[40%] bg-accent/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[40%] h-[40%] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <m.div
           initial="hidden"
           whileInView="visible"
-          // key point: once: false ensures animation runs every time it enters view
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true }}
           variants={containerVariants}
-          className="bg-white rounded-[2.5rem] shadow-2xl p-10 md:p-14 grid lg:grid-cols-2 gap-12 items-center"
+          className="bg-[#f8f9fa] rounded-[3rem] shadow-[0_50px_100px_rgba(0,0,0,0.4)] p-10 md:p-16 grid lg:grid-cols-2 gap-16 items-center"
         >
-          {/* Left Side: Animated Text */}
-          <div className="space-y-6">
+          {/* Left Side: Dark Text on Light Card */}
+          <div className="space-y-8">
             <div className="overflow-hidden">
-              <m.span 
+              <m.span
                 variants={textItemVariants}
-                className="inline-block px-4 py-1 rounded-full bg-orange-100 text-orange-600 text-xs font-bold uppercase tracking-widest mb-4"
+                className="inline-block px-5 py-2 rounded-full border border-accent/10 bg-accent/5 text-accent text-[10px] font-bold uppercase tracking-[0.4em] mb-4"
               >
                 Limited Availability
               </m.span>
             </div>
 
-            {/* Word-by-Word Heading Animation */}
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 leading-[1.1] flex flex-wrap gap-x-[0.3em] overflow-hidden">
-              {words.map((word, i) => (
-                <m.span
-                  key={i}
-                  variants={wordVariants}
-                  className={`inline-block ${word === 'FREE'||word === 'Plan'||word === 'Growth'||word === 'SEO' ? 'text-orange-500' : ''}`}
-                >
-                  {word}
-                </m.span>
-              ))}
-            </h2>
-
-            <div className="overflow-hidden">
-              <m.p 
+            <div className="space-y-2">
+              <m.h3 
                 variants={textItemVariants}
-                className="text-slate-600 text-lg md:text-xl leading-relaxed max-w-md"
+                className="font-dancing text-4xl md:text-5xl text-accent font-medium"
               >
-                Discover hidden SEO opportunities and a clear roadmap customized for your business.
-              </m.p>
+                {headingTitle}
+              </m.h3>
+              <h2 className="text-4xl md:text-6xl font-black text-primary leading-tight uppercase tracking-tighter">
+                {words.map((word, i) => (
+                  <span key={i} className={word === "FREE" || word === "Growth" ? "text-accent" : ""}>
+                    {word}{" "}
+                  </span>
+                ))}
+              </h2>
             </div>
 
+            <m.p
+              variants={textItemVariants}
+              className="text-slate-600 text-lg md:text-xl leading-relaxed max-w-md font-medium"
+            >
+              Our audit uncovers technical friction and search intent gaps that your competitors are missing. 
+              <span className="text-primary font-bold italic"> No fluff, just data.</span>
+            </m.p>
+
+            {/* Social Proof Tags */}
             <m.div variants={textItemVariants} className="flex gap-4 items-center pt-4">
-               <div className="flex -space-x-3">
-                 {[1,2,3].map(i => (
-                   <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200" />
-                 ))}
-               </div>
-               <p className="text-sm font-medium text-slate-500 underline decoration-orange-400">Join 500+ businesses</p>
+               <div className="h-px w-12 bg-slate-200" />
+               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">
+                 Trusted by <span className="text-primary">500+ Global Brands</span>
+               </p>
             </m.div>
           </div>
 
-          {/* Right Side: Form (Standard Cursor) */}
-          <m.form 
+          {/* Right Side: High-Contrast Form */}
+          <m.form
             variants={textItemVariants}
-            className="grid gap-4 bg-slate-50 p-6 md:p-8 rounded-3xl border border-slate-100 shadow-inner cursor-auto"
+            className="grid gap-5 bg-white p-8 md:p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-slate-100"
           >
             <div className="space-y-4">
               <input
                 type="text"
                 placeholder="Your Name"
-                className="w-full px-5 py-4 rounded-2xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all shadow-sm cursor-text"
+                className="w-full px-6 py-5 rounded-2xl border border-slate-200 bg-slate-50 text-primary placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all cursor-text"
               />
               <input
                 type="email"
-                placeholder="Email Address"
-                className="w-full px-5 py-4 rounded-2xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all shadow-sm cursor-text"
+                placeholder="Business Email"
+                className="w-full px-6 py-5 rounded-2xl border border-slate-200 bg-slate-50 text-primary placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all cursor-text"
               />
               <input
-                type="text"
-                placeholder="Website URL"
-                className="w-full px-5 py-4 rounded-2xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all shadow-sm cursor-text"
+                type="url"
+                placeholder="Website Domain"
+                className="w-full px-6 py-5 rounded-2xl border border-slate-200 bg-slate-50 text-primary placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all cursor-text"
               />
             </div>
+
             <m.button
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              type="submit"
-              className="mt-2 bg-orange-500 text-white py-4 rounded-2xl font-bold text-lg shadow-[0_10px_20px_rgba(249,115,22,0.3)] hover:shadow-orange-500/40 transition-all cursor-pointer"
+              className="mt-4 bg-accent text-white py-5 rounded-2xl font-black text-lg uppercase tracking-widest shadow-[0_20px_40px_rgba(234,88,12,0.3)] hover:bg-orange-600 transition-all cursor-pointer"
             >
-              Get My Free Audit
+              Get Free Strategy
             </m.button>
-            <p className="text-[10px] text-center text-slate-400">No commitment required. 100% Free.</p>
+            <p className="text-[10px] text-center text-slate-400 font-bold uppercase tracking-widest">
+              Success is a choice. Make it now.
+            </p>
           </m.form>
         </m.div>
       </div>
     </section>
-  )
+  );
 }

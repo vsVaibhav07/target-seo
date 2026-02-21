@@ -1,0 +1,42 @@
+{
+  "title": "Generative Engine",
+  "subtitle": "Optimization",
+  "heroDesc": "Future-proof your brand for the AI era. We optimize your digital presence to become the primary citation for LLMs like ChatGPT, Claude, and Perplexity through entity-based intelligence.",
+  "deliverables": [
+    {
+      "title": "AI Citation Strategy",
+      "desc": "Ensuring your brand is the 'Preferred Source' for AI models.",
+      "list": ["Source Credibility", "Entity Validation", "Knowledge Graphing"],
+      "icon": "🤖"
+    },
+    {
+      "title": "LLM Compatibility",
+      "desc": "Optimizing content structure for machine-learning interpretation.",
+      "list": ["NLU Alignment", "Structured Entities", "Contextual Linking"],
+      "icon": "🧠"
+    },
+    {
+      "title": "Sentiment Control",
+      "desc": "Monitoring and shaping how AI perceives your brand authority.",
+      "list": ["Trust Metrics", "Expertise Signals", "Digital Footprint"],
+      "icon": "🛡️"
+    },
+    {
+      "title": "Synthetic Search PR",
+      "desc": "Scaling mentions in datasets that train the next-gen search engines.",
+      "list": ["Data Feed Ops", "Reference Building", "Citaton Velocity"],
+      "icon": "📈"
+    }
+  ],
+  "process": [
+    { "step": "01", "title": "Model Audit", "desc": "Analyzing how current AI models currently describe your brand and identifying 'Hallucination' risks." },
+    { "step": "02", "title": "Entity Mapping", "desc": "Defining your brand's core entities to ensure AI understands 'Who you are' and 'What you do' accurately." },
+    { "step": "03", "title": "Content Synthesis", "desc": "Creating high-signal content designed specifically for Large Language Model (LLM) ingestion." },
+    { "step": "04", "title": "Citation Injection", "desc": "Placing your brand in high-authority datasets and platforms where AI engines crawl for facts." },
+    { "step": "05", "title": "Feedback Loops", "desc": "Real-time monitoring of AI responses and tweaking content to remain the top recommended answer." }
+  ],
+  "faqs": [
+    { "q": "What is GEO exactly?", "a": "GEO is the process of optimizing your site so AI-based search engines like Perplexity and Search Generative Experience (SGE) cite you as a source." },
+    { "q": "Is GEO different from SEO?", "a": "Yes. SEO focuses on ranking links; GEO focuses on being the direct answer and citation within an AI-generated response." }
+  ]
+}

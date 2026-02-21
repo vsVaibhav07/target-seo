@@ -15,7 +15,7 @@ export default function Footer() {
           <Link href="/" className="relative group -ml-2 lg:-ml-4">
             <div className="relative w-[180px] h-[70px] lg:w-[280px] lg:h-[90px]">
               <Image 
-                src="/logo3-transparent.png" 
+                src="/new-logot.png" 
                 fill 
                 priority 
                 alt='Logo'
