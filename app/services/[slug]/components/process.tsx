@@ -50,10 +50,9 @@ export const Process = ({ steps }: ProcessProps) => {
           >
             Workflow
           </m.span>
-          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none">
-            Execution <br />
+          <h2 className="text-5xl md:text-7xl font-dancing uppercase tracking-tighter leading-none">
             <span className="font-dancing text-accent normal-case font-medium italic">
-              Process
+               Execution Process
             </span>
           </h2>
         </div>
@@ -98,12 +97,12 @@ export const Process = ({ steps }: ProcessProps) => {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tight mb-6 group-hover:text-accent transition-colors duration-500">
+                <h3 className="text-3xl md:text-5xl font-dancing font-bold text-white uppercase tracking-tight mb-6 group-hover:text-accent transition-colors duration-500">
                   {item.title}
                 </h3>
                 
                 {/* Description */}
-                <p className="text-slate-400 text-lg md:text-xl leading-relaxed max-w-3xl font-medium">
+                <p className="text-slate-400 text-justify text-lg md:text-xl leading-relaxed max-w-3xl font-medium">
                   {item.desc}
                 </p>
                 

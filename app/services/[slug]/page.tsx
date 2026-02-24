@@ -12,6 +12,7 @@ import { Process } from "./components/process";
 import Testimonials from "@/app/components/home/testimonials";
 import PrimaryCTA from "@/app/components/home/primaryCTA";
 import ServiceFAQ from "../component/faq";
+import CeoMessage from "@/app/components/common/ceoMessage";
 
 export default function IndividualServicePage() {
   const { slug } = useParams();
@@ -101,7 +102,7 @@ export default function IndividualServicePage() {
         <Hero data={data} />
         
         {/* Light Section Wrapper */}
-        <div className=" rounded-t-[3rem] md:rounded-t-[5rem] relative z-20 mt-[-50px]">
+        <div className=" rounded-t-[3rem] md:rounded-t-[5rem] h-full overflow-hidden relative z-20 mt-[-50px]">
           <Deliverables items={data.deliverables} />
           
           
@@ -113,6 +114,7 @@ export default function IndividualServicePage() {
 
           <PrimaryCTA />
           <ServiceFAQ data={data.faqs} />
+          <CeoMessage/>
         </div>
       </main>
     </LazyMotion>

@@ -27,7 +27,7 @@ const services: Service[] = [
     slug: "seo",
     desc: "Dominate organic search with semantic authority and high-performance technical frameworks.",
     icon: Search,
-    image: "https://images.unsplash.com/photo-1616469829581-73993eb86b02",
+    image: "/images/seo-service.jpg",
     accent: "#ea580c",
     bgColor: "#0f172a" 
   },
@@ -36,7 +36,7 @@ const services: Service[] = [
     slug: "smo",
     desc: "Transform your social footprint into a community-driven revenue engine through viral storytelling.",
     icon: Share2,
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113",
+    image: "/images/smo-service.avif",
     accent: "#2563eb",
     bgColor: "#022c22" 
   },
@@ -45,7 +45,7 @@ const services: Service[] = [
     slug: "geo",
     desc: "Ensure your brand is the primary citation for AI engines like Perplexity, ChatGPT, and SGE.",
     icon: Network,
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485",
+    image: "/images/geo-service.jpg",
     accent: "#06b6d4",
     bgColor: "#083344"
   },
@@ -54,7 +54,7 @@ const services: Service[] = [
     slug: "aeo",
     desc: "Win the 'Zero-Click' search era by optimizing for voice intent and direct featured snippets.",
     icon: Mic,
-    image: "https://images.unsplash.com/photo-1589254065878-42c9da997008",
+    image: "/images/aeo-service.jpg",
     accent: "#f43f5e",
     bgColor: "#450a0a"
   },

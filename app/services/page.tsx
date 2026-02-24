@@ -7,6 +7,7 @@ import OurServices from './component/ourServices'
 import BluePremiumHero from './component/servicehero'
 import ServiceFeatures from './component/features'
 import WhyUs from './component/whyus'
+import CeoMessage from '../components/common/ceoMessage'
 
 const faqs = [
   {
@@ -46,7 +47,7 @@ const Page = () => {
       
         <OurProcess />
         <ServiceFAQ data={faqs} />
-      
+        <CeoMessage/>
 
     </div>
   )

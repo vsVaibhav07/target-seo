@@ -34,7 +34,7 @@ const Typewriter = ({ text }: { text: string }) => {
 
   return (
     <span className="relative  inline-flex items-center">
-      <span className=" font-serif italic tracking-wider uppercase drop-shadow-[0_0_20px_rgba(var(--accent-rgb),0.4)]">
+      <span className=" text-4xl md:text-5xl lg:text-8xl font-serif italic tracking-wider uppercase drop-shadow-[0_0_20px_rgba(var(--accent-rgb),0.4)]">
         {displayedText}
       </span>
       <m.span 
@@ -144,7 +144,7 @@ export const Hero = ({ data }: { data: any }) => {
           <span className="font-dancing normal-case text-accent block mb-4 text-7xl md:text-[140px] drop-shadow-2xl">
             {data.title}
           </span>
-          <div className="flex flex-col text-white md:flex-row items-center justify-center gap-x-6 gap-y-4">
+          <div className="flex flex-col text-white md:flex-row items-center justify-center gap-x-6  gap-y-4">
            
             <Typewriter text={data.subtitle} />
           </div>

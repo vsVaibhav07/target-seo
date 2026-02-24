@@ -1,6 +1,6 @@
 'use client'
 
-import {m, Variants } from 'framer-motion'
+import { m, Variants } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react'
 import Image from 'next/image'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
@@ -10,44 +10,37 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-
-
 const testimonials = [
   {
-    name: 'John D',
-    role: 'Business Owner',
-    image: '/user.webp',
-    text: 'Target SEO Solutions helped us achieve consistent lead growth and top rankings. Their strategy and execution exceeded our expectations.',
+    name: "William C Head",
+    image: "https://rebrandsolution.com/assets/images/testimonial/head.webp",
+    text: "Rebrand Solution gave me such a great service, and now we generate a lot of new jobs through our website. The team was incredibly professional and understood our vision perfectly.",
     rating: 5
   },
   {
-    name: 'Sarah M',
-    role: 'Marketing Head',
-    image: '/user.webp',
-    text: 'Our organic traffic and conversions improved massively. Transparent reporting and clear communication made the process smooth.',
+    name: "Leo M. Hughes",
+    image: "https://rebrandsolution.com/assets/images/testimonial/hughes.webp",
+    text: "Professional, transparent, and effective services. Rebrand Solutions has been a reliable growth partner for our business. Their strategic approach to SEO is unmatched.",
     rating: 5
   },
   {
-    name: 'Amit K',
-    role: 'Startup Founder',
-    image: '/user.webp',
-    text: 'From low visibility to strong keyword rankings, the results were impressive. Highly recommended SEO partner.',
+    name: "Andrea Rondini",
+    image: "https://rebrandsolution.com/assets/images/testimonial/rondini.webp",
+    text: "Rebrand Solution has helped me generate thousands of dollars in new business and helped me grow my brand globally. Their attention to detail is unmatched in the industry.",
     rating: 5
   },
   {
-    name: 'Emily R',
-    role: 'E-commerce Manager',
-    image: '/user.webp',
-    text: 'We saw a huge jump in revenue from organic traffic. Their technical SEO expertise is top-notch.',
+    name: "David Louis",
+    image: "https://rebrandsolution.com/assets/images/testimonial/devid.webp",
+    text: "You've done a fantastic job here; I was really surprised how well it seems to understand our product and technology. It felt like they were part of our internal team.",
     rating: 5
-  }
-]
-
+  },
+];
 export default function Testimonials() {
   const headingText = "What Our Clients Say"
   const words = headingText.split(" ")
 
-  const wordVariants:Variants = {
+  const wordVariants: Variants = {
     hidden: { y: 30, opacity: 0 },
     visible: (i: number) => ({
       y: 0,
@@ -64,9 +57,9 @@ export default function Testimonials() {
     <section className="relative flex items-center justify-center py-24 bg-slate-50 overflow-hidden lg:min-h-screen">
       <div className="max-w-7xl mx-auto px-6 relative w-full">
         
-        
-        <div className="flex justify-center mb-12 md:mb-20 overflow-hidden">
-          <h2 className={`font-(family-name:--font-dancing) text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 flex flex-wrap gap-x-4 justify-center text-center leading-tight`}>
+        {/* Section Heading */}
+        <div className="flex justify-center mb-16 md:mb-24 overflow-hidden">
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 flex flex-wrap gap-x-4 justify-center font-dancing text-center leading-tight tracking-tighter uppercase">
             {words.map((word, i) => (
               <m.span
                 key={i}
@@ -75,7 +68,7 @@ export default function Testimonials() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.5 }}
-                className={word === 'Clients' ? 'text-orange-500' : ''}
+                className={word === 'Clients' ? 'text-blue-600' : ''}
               >
                 {word}
               </m.span>
@@ -83,13 +76,13 @@ export default function Testimonials() {
           </h2>
         </div>
 
-        {/* Custom Navigation - Default Cursors */}
+        {/* Navigation Buttons */}
         <div className="hidden lg:block">
-          <button className="testimonial-prev absolute left-0 top-[60%] -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-white shadow-lg flex items-center justify-center border border-slate-100 hover:bg-orange-500 hover:text-white transition-all cursor-pointer">
-            <ChevronLeft size={24} />
+          <button className="testimonial-prev absolute left-0 top-[60%] -translate-y-1/2 z-20 h-14 w-14 rounded-full bg-white shadow-xl flex items-center justify-center border border-slate-100 hover:bg-blue-600 hover:text-white transition-all cursor-pointer">
+            <ChevronLeft size={28} />
           </button>
-          <button className="testimonial-next absolute right-0 top-[60%] -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-white shadow-lg flex items-center justify-center border border-slate-100 hover:bg-orange-500 hover:text-white transition-all cursor-pointer">
-            <ChevronRight size={24} />
+          <button className="testimonial-next absolute right-0 top-[60%] -translate-y-1/2 z-20 h-14 w-14 rounded-full bg-white shadow-xl flex items-center justify-center border border-slate-100 hover:bg-blue-600 hover:text-white transition-all cursor-pointer">
+            <ChevronRight size={28} />
           </button>
         </div>
 
@@ -100,50 +93,54 @@ export default function Testimonials() {
           speed={1000}
           pagination={{ clickable: true }}
           navigation={{ prevEl: '.testimonial-prev', nextEl: '.testimonial-next' }}
-          spaceBetween={30}
+          spaceBetween={40}
           slidesPerView={1}
           breakpoints={{
             768: { slidesPerView: 2 },
             1024: { slidesPerView: 3 }
           }}
-          className="pb-16 !px-2"
+          className="!pb-20 !px-4"
         >
           {testimonials.map((item, i) => (
-            <SwiperSlide key={i} className="!h-auto">
+            <SwiperSlide key={i} className="!h-auto flex flex-col items-center">
               <m.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
-                transition={{ duration: 0.5 }}
-                className="h-full bg-white rounded-[2.5rem] border border-slate-100 p-8 md:p-10 shadow-sm flex flex-col relative group cursor-auto"
+                className="w-full flex flex-col items-center group"
               >
-                <Quote className="absolute top-8 right-8 text-slate-100 group-hover:text-orange-100 transition-colors" size={48} />
+                {/* BLUE DESIGNED CARD */}
+                <div className="relative w-full aspect-[4/3] bg-gradient-to-br from-[#0f172a] to-blue-900 rounded-[3rem] p-8 md:p-10 shadow-2xl shadow-blue-200 flex flex-col justify-center items-center text-center overflow-hidden mb-8">
+                  {/* Decorative Elements */}
+                  <div className="absolute top-[-10%] right-[-10%] w-32 h-32 bg-white/10 rounded-full blur-2xl" />
+                  <Quote className="absolute top-6 left-8 text-white/10" size={60} />
+                  
+                  <p className="relative z-10 text-white text-lg md:text-xl font-medium leading-relaxed italic">
+                    "{item.text}"
+                  </p>
 
-                {/* Compact User Header */}
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="relative h-16 w-16 flex-shrink-0">
+                  <div className="mt-6 flex gap-1 justify-center relative z-10">
+                    {[...Array(item.rating)].map((_, idx) => (
+                      <Star key={idx} size={18} className="text-yellow-400 fill-yellow-400" />
+                    ))}
+                  </div>
+                </div>
+
+                {/* USER INFO SECTION (Below Card) */}
+                <div className="flex flex-col items-center gap-3">
+                  <div className="relative h-20 w-20 border-4 border-white shadow-lg rounded-full overflow-hidden">
                     <Image 
                       src={item.image} 
                       alt={item.name} 
                       fill
-                      className="rounded-full object-cover border-2 border-orange-50"
+                      unoptimized
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      priority={i < 3}
                     />
                   </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 text-lg leading-tight mb-1">{item.name}</h4>
-                    <p className="text-sm font-semibold text-orange-500 uppercase tracking-wider">{item.role}</p>
-                  </div>
-                </div>
-
-                <p className="text-slate-600 text-base leading-relaxed mb-8 flex-grow">
-                  "{item.text}"
-                </p>
-
-                {/* Rating */}
-                <div className="flex gap-1.5 pt-4 border-t border-slate-50">
-                  {[...Array(item.rating)].map((_, index) => (
-                    <Star key={index} size={16} className="text-orange-400 fill-orange-400" />
-                  ))}
+                  <h4 className="font-black text-slate-900 text-xl tracking-tight uppercase">
+                    {item.name}
+                  </h4>
                 </div>
               </m.div>
             </SwiperSlide>
@@ -152,8 +149,16 @@ export default function Testimonials() {
       </div>
 
       <style jsx global>{`
-        .swiper-pagination-bullet-active { background: #f97316 !important; width: 24px !important; border-radius: 10px !important; transition: all 0.3s ease; }
-        .swiper-pagination-bullet { transition: all 0.3s ease; }
+        .swiper-pagination-bullet-active { 
+          background: #2563eb !important; 
+          width: 32px !important; 
+          border-radius: 10px !important; 
+        }
+        .swiper-pagination-bullet { 
+          background: #cbd5e1;
+          opacity: 1;
+          transition: all 0.3s ease; 
+        }
       `}</style>
     </section>
   )
