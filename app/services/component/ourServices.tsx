@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-import { ArrowRight, Search, Share2, Brain, Zap, MessageSquare, Mic, Network, type LucideIcon } from "lucide-react";
+import { ArrowRight, Search, Share2, Brain, Zap, MessageSquare,Palette,Code2, Mic, Network, type LucideIcon } from "lucide-react";
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
@@ -57,6 +57,24 @@ const services: Service[] = [
     image: "/images/aeo-service.jpg",
     accent: "#f43f5e",
     bgColor: "#450a0a"
+  },
+  {
+    title: "Web Development",
+    slug: "web-development",
+    desc: "Building high-performance, scalable web applications with cutting-edge tech stacks and seamless API integrations.",
+    icon: Code2, 
+    image: "/images/web-dev-service.avif",
+    accent: "#3b82f6", 
+    bgColor: "#020617" 
+  },
+  {
+    title: "UI/UX & Web Design",
+    slug: "web-design",
+    desc: "Crafting visually stunning, user-centric interfaces that blend aesthetic excellence with psychological conversion triggers.",
+    icon: Palette, 
+    image: "/images/web-design-service.jpg",
+    accent: "#8b5cf6", 
+    bgColor: "#1e1b4b" 
   },
   {
     title: "LLM & AI Optimization",
@@ -208,11 +226,11 @@ export default function OurServices() {
                   <IconComponent className="w-8 h-8 text-white" />
                 </div>
                 
-                <h3 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter uppercase leading-[0.85]">
+                <h3 className="text-5xl md:text-7xl font-serif mb-8 tracking-tighter uppercase leading-[0.85]">
                   {service.title}
                 </h3>
 
-                <p className="text-slate-400 text-lg md:text-xl leading-relaxed mb-12 max-w-sm opacity-80">
+                <p className="text-slate-400 font-serif text-lg md:text-xl leading-relaxed mb-12 max-w-sm opacity-80">
                   {service.desc}
                 </p>
 

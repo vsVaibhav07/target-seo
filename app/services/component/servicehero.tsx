@@ -97,7 +97,7 @@ const BluePremiumHero = () => {
     <LazyMotion features={domAnimation}>
       <section
         ref={containerRef}
-        className="relative min-h-screen bg-[#020617] pt-24 pb-12 md:pt-32 md:pb-20 flex flex-col justify-center overflow-x-hidden w-full"
+        className="relative min-h-screen  bg-[#020617] pt-24 pb-12 md:pt-32 md:pb-20 flex flex-col justify-center overflow-x-hidden w-full"
       >
         {/* Background Decorative Elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">

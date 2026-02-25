@@ -49,11 +49,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Header />
             
             {/* TransitionWrapper handles AnimatePresence and PageTransition */}
-            <TransitionWrapper>
+            {/* <TransitionWrapper> */}
               <main className="relative min-h-screen">
                 {children}
               </main>
-            </TransitionWrapper>
+            {/* </TransitionWrapper> */}
 
             <Footer />
           </ScrollProvider>

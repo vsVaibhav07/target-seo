@@ -39,7 +39,7 @@ const Page = () => {
         <ServiceFeatures />
 
       {/* 4. OUR SERVICES - Slides Over WhyUs */}
-      <section className="relative  top-0 z-40 min-h-screen bg-[#020617] shadow-[0_-30px_50px_rgba(0,0,0,0.5)]">
+      <section className="relative   z-40 min-h-screen bg-[#020617] shadow-[0_-30px_50px_rgba(0,0,0,0.5)]">
         <OurServices />
       </section>
 

@@ -1,0 +1,42 @@
+{
+  "title": "Full-Stack Web",
+  "subtitle": "Development",
+  "heroDesc": "We engineer high-performance, scalable web applications using the latest tech stacks. From complex architectures to seamless API integrations, we build digital products that scale with your ambition.",
+  "deliverables": [
+    {
+      "title": "Front-End Engineering",
+      "desc": "Building pixel-perfect, highly interactive user interfaces.",
+      "list": ["Next.js/React Expertise", "State Management", "Micro-Interactions"],
+      "icon": "💻"
+    },
+    {
+      "title": "Back-End Systems",
+      "desc": "Robust server-side logic and secure database management.",
+      "list": ["API Architecture", "Serverless Functions", "Real-time Databases"],
+      "icon": "🛡️"
+    },
+    {
+      "title": "E-Commerce Ops",
+      "desc": "High-conversion online stores with secure checkout flows.",
+      "list": ["Headless Commerce", "Payment Gateways", "Inventory Logic"],
+      "icon": "🛒"
+    },
+    {
+      "title": "Web Performance",
+      "desc": "Optimizing for lightning-fast load times and scalability.",
+      "list": ["Edge Computing", "Asset Optimization", "Load Balancing"],
+      "icon": "⚡"
+    }
+  ],
+  "process": [
+    { "step": "01", "title": "Requirement Analysis", "desc": "We define the technical scope, stack selection, and feature roadmap to align with your business goals." },
+    { "step": "02", "title": "System Architecture", "desc": "Designing the database schema and API structure for a scalable and maintainable foundation." },
+    { "step": "03", "title": "Agile Development", "desc": "Sprints-based coding where we build features iteratively, ensuring constant feedback and updates." },
+    { "step": "04", "title": "QA & Testing", "desc": "Rigorous cross-browser, unit, and security testing to ensure a bug-free deployment." },
+    { "step": "05", "title": "Deployment & Support", "desc": "Launching on high-performance servers with CI/CD pipelines and 24/7 technical monitoring." }
+  ],
+  "faqs": [
+    { "q": "Which technologies do you use?", "a": "We specialize in the MERN stack, Next.js, and TypeScript, but we select the tech stack based on project needs." },
+    { "q": "Will my website be mobile-friendly?", "a": "Absolutely. Every line of code is written with a 'Mobile-First' approach for flawless responsive performance." }
+  ]
+}

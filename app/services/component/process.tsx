@@ -11,6 +11,7 @@ import {
 } from "framer-motion";
 import { Search, PenTool, Zap, BarChart3 } from "lucide-react";
 import { Pricing } from "./pricing";
+import Image from "next/image";
 
 const steps = [
   {
@@ -67,15 +68,16 @@ export default function SnakyProcess() {
     <LazyMotion features={domAnimation}>
       <section
         ref={containerRef}
-        className="relative overflow-visible"
+        className="relative max-w-screen  overflow-visible overflow-x-hidden"
       >
         {/* --- PINNED BACKGROUND IMAGE LAYER --- */}
         {/* We use 'fixed' or 'sticky' to pin it. Sticky works best within a section wrapper */}
         <div className="fixed inset-0 -z-50 h-screen w-full pointer-events-none overflow-hidden">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1770110000509-6c8298224699?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Process Background"
-            className="absolute inset-0 w-screen h-screen object-cover"
+            fill
+            className="absolute h-screen object-cover"
           />
           {/* Darker overlay to help text readability since image is now "clearly visible" */}
           <div className="absolute inset-0 bg-black/50" />

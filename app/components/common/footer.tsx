@@ -72,9 +72,9 @@ export default function Footer() {
           </h4>
           <div className="text-slate-400 text-sm space-y-2">
             <p className="hover:text-white transition-colors cursor-pointer flex items-center gap-2">
-              <span className="text-orange-500">@</span> info@targetseo.com
+              <span className="text-orange-500">@</span>  info@targetseosolutions.com
             </p>
-            <p className="font-medium">+1 (123) 456-7890</p>
+            <p className="font-medium">+91-9716435985</p>
           </div>
           <div className="flex space-x-3 pt-2">
             {[

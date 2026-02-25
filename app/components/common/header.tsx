@@ -12,6 +12,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 const navLinks = [
+   { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
   { name: "Industries", href: "/industries" },
   { name: "Case Studies", href: "/case-studies" },

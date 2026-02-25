@@ -52,7 +52,7 @@ export default function CeoMessage() {
               <span className="h-px w-8 bg-white/10" />
             </div>
 
-            <h3 className="text-xl md:text-3xl font-bold text-white leading-tight tracking-tight italic">
+            <h3 className="text-xl md:text-3xl text-justify font-bold text-white leading-tight tracking-tight italic">
               "Our vision transcends simple rankings; we are here to transform
               your brand into a{" "}
               <span className="text-accent">
@@ -61,7 +61,7 @@ export default function CeoMessage() {
               "
             </h3>
 
-            <p className="text-slate-400 text-base md:text-lg leading-relaxed font-light">
+            <p className="text-slate-400 text-base text-justify md:text-lg leading-relaxed font-light">
               The digital landscape evolves every single day. At Target SEO, we
               don't just chase algorithms—we engineer future-proof strategies
               that prioritize high-intent growth, radical transparency, and

@@ -1,0 +1,42 @@
+{
+  "title": "UI/UX & Brand",
+  "subtitle": "Design",
+  "heroDesc": "We blend psychological triggers with aesthetic excellence to create designs that don't just look good—they convert. Our goal is to craft visual stories that resonate and stick.",
+  "deliverables": [
+    {
+      "title": "User Experience (UX)",
+      "desc": "Strategic wireframing focused on seamless user journeys.",
+      "list": ["User Flow Mapping", "Information Architecture", "Usability Testing"],
+      "icon": "🧠"
+    },
+    {
+      "title": "User Interface (UI)",
+      "desc": "Creating visually stunning and modern digital interfaces.",
+      "list": ["Visual Storytelling", "Design Systems", "High-Fidelity Mockups"],
+      "icon": "🎨"
+    },
+    {
+      "title": "Prototyping",
+      "desc": "Interactive demos to visualize the product before coding.",
+      "list": ["Clickable Prototypes", "Motion Design", "Interaction Feedback"],
+      "icon": "✨"
+    },
+    {
+      "title": "Brand Identity",
+      "desc": "Defining your digital presence through elite aesthetics.",
+      "list": ["Logo Ecosystem", "Typography Sets", "Color Psychology"],
+      "icon": "🖋️"
+    }
+  ],
+  "process": [
+    { "step": "01", "title": "User Research", "desc": "Understanding your target audience's behavior, pain points, and aesthetic preferences." },
+    { "step": "02", "title": "Wireframing", "desc": "Creating the blueprint of your site without colors or images to focus purely on layout and UX." },
+    { "step": "03", "title": "Visual Direction", "desc": "Applying moodboards and styles to the wireframes to create a cohesive brand look and feel." },
+    { "step": "04", "title": "Interactive Design", "desc": "Finalizing high-fidelity screens and adding micro-animations for an engaging experience." },
+    { "step": "05", "title": "Hand-off", "desc": "Providing developers with clean design assets, style guides, and documentation for perfect execution." }
+  ],
+  "faqs": [
+    { "q": "Do you provide Figma files?", "a": "Yes, we provide fully organized, component-based Figma source files for every project." },
+    { "q": "How many revisions do I get?", "a": "We typically offer 3 rounds of revisions to ensure the final design is exactly what your brand needs." }
+  ]
+}
