@@ -3,49 +3,52 @@ import React, { useEffect } from "react";
 import Lenis from "lenis";
 import DotBackground from "./components/dotBg";
 import CustomCursor from "./components/circleCursor";
-import { 
-  AboutHero, 
-  MissionValues, 
-  CEOSection, 
-  WhyChooseUs 
-} from "./components/sections";
+import AboutHero from "./components/hero";
+import AboutUs from "./components/aboutUs";
+import CEOSection from "./components/aboutCEO";
+import WhyChooseUs from "./components/whyUs";
+import { m, LazyMotion, domMax } from "framer-motion";
+import CTASection from "./components/CTASection";
 
 export default function AboutPage() {
   useEffect(() => {
-    const lenis = new Lenis();
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+    });
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
+    return () => lenis.destroy();
   }, []);
 
   return (
-    <main className="relative bg-[#020617] selection:bg-orange-500 selection:text-white">
-      {/* Background & Cursor */}
-      <CustomCursor />
-      <DotBackground />
+    <LazyMotion features={domMax}>
+      <main className="relative cursor-none bg-[#020617] text-white selection:bg-orange-500 overflow-x-hidden">
+        <CustomCursor />
+        {/* Fixed Background Layer */}
+        <div className="fixed inset-0 z-0">
+           <DotBackground />
+           {/* Moving Decorative SVG Blurs */}
+           <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-orange-600/10 blur-[120px] rounded-full animate-pulse" />
+           <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-blue-600/10 blur-[120px] rounded-full animate-bounce duration-[10s]" />
+        </div>
 
-      {/* Content Container (Scrolls over fixed background) */}
-      <div className="relative z-10">
-        <AboutHero />
-        
-        <div className="bg-gradient-to-b from-transparent via-[#020617]/80 to-[#020617]">
-          <MissionValues />
+        {/* Content Layer */}
+        <div className="relative z-10 w-full">
+          <AboutHero />
+          <AboutUs />
           <CEOSection />
           <WhyChooseUs />
-          
-          {/* Final CTA */}
-          <section className="py-40 text-center px-6">
-            <h2 className="text-5xl md:text-8xl font-dancing text-white uppercase tracking-tighter mb-10">
-              Let's Grow <br/> <span className="text-accent font-serif">Together.</span>
-            </h2>
-            <button className="px-12 py-5 bg-accent text-white font-bold font-serif cursor-pointer rounded-full uppercase tracking-widest hover:scale-110 transition-transform">
-              Get In Touch
-            </button>
-          </section>
+    <CTASection/>
         </div>
-      </div>
-    </main>
+      </main>
+    </LazyMotion>
   );
 }

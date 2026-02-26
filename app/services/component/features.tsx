@@ -56,11 +56,11 @@ export default function ServiceFeatures() {
 
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-4xl mb-12 text-center lg:text-left">
-              <div className="flex items-center justify-center lg:justify-start gap-3 text-orange-500 text-[10px] font-black tracking-[0.4em] uppercase mb-4">
+              <div className="flex items-center justify-center lg:justify-start gap-3 text-accent text-[10px] font-black tracking-[0.4em] uppercase mb-4">
                 <Sparkles className="w-4 h-4" />
                 <span>Premium Deliverables</span>
               </div>
-              <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-tight tracking-tighter uppercase">
+              <h2 className="text-5xl md:text-7xl  font-black text-white leading-tight tracking-tighter font-dancing uppercase">
                 Expert <span className="text-orange-500">Precision.</span>
               </h2>
             </div>

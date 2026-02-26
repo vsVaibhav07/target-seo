@@ -52,14 +52,13 @@ export default function Home() {
         <WhyUs />
       </section>
 
-      {/* 3. SERVICES: Light Section (Slides OVER WhyUs) 
-          Using shadow and rounded corners to show depth */}
+      
       <section className="relative z-20 -mt-20 rounded-t-[3rem] lg:rounded-t-[5rem] overflow-hidden">
         <Services />
       </section>
 
      
-      {/* 5. CASE STUDIES: Overlapping effect usually built-in inside the component */}
+     
       <section className="relative z-30 mt-20">
         <CaseStudies />
       </section>

@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion, Variants } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, Variants, useScroll, useTransform } from "framer-motion";
 import { Target, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
 
@@ -70,43 +70,61 @@ export const AboutHero: React.FC = () => (
 );
 
 // --- MISSION & VALUES ---
-export const MissionValues: React.FC = () => (
-  <section className="py-32 container mx-auto px-6 grid lg:grid-cols-2 gap-20 bg-transparent">
-    <motion.div 
-      initial="initial"
-      whileInView="whileInView"
-      viewport={{ once: true }}
-      variants={fadeUp} 
-      className="space-y-8"
-    >
-      <h2 className="text-5xl font-black font-dancing text-white uppercase">Our Mission</h2>
-      <p className="text-slate-400 text-lg leading-relaxed border-l-2 border-accent pl-8">
-        Our mission is to deliver real results for businesses of all sizes... every brand should have the chance to be seen, heard, and trusted online.
-      </p>
-    </motion.div>
-    <div className="grid grid-cols-2 gap-6">
-      {[
-        { title: "Integrity", desc: "Honest, clear practices." },
-        { title: "Innovation", desc: "Leading tech trends." },
-        { title: "Excellence", desc: "Highest standards." },
-        { title: "Client-First", desc: "Tailored solutions." }
-      ].map((val, i) => (
-        <motion.div 
-          key={i} 
-          initial="initial"
-          whileInView="whileInView"
-          viewport={{ once: true }}
-          variants={fadeUp}
-          transition={{ delay: i * 0.1 }}
-          className="p-8 bg-transparent border border-white/10 rounded-3xl backdrop-blur-xl"
+export const MissionValues: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 0.9", "start 0.4"],
+  });
+
+  // Animated text properties
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
+  const blur = useTransform(scrollYProgress, [0, 1], ["blur(4px)", "blur(0px)"]);
+
+  const missionText = "We exist to turn digital potential into measurable equity. Our mission is to dismantle the barriers to online visibility through data-backed strategies and precision engineering. We believe every brand deserves a seat at the top of the SERPs, empowering businesses to amplify their voice and build lasting trust with their global audience.";
+
+  return (
+    <section ref={containerRef} className="py-32 container mx-auto px-6 grid lg:grid-cols-2 gap-20 bg-transparent items-center">
+      <motion.div 
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        variants={fadeUp} 
+        className="space-y-8"
+      >
+        <h2 className="text-5xl font-black font-dancing text-white uppercase">Our Mission</h2>
+        <motion.p 
+          style={{ opacity, filter: blur }}
+          className="text-white/80 text-2xl md:text-2xl text-justify leading-tight font-light tracking-tight border-l-4 border-accent pl-8 py-2"
         >
-          <h4 className="text-accent font-bold mb-2 uppercase text-xs tracking-widest">{val.title}</h4>
-          <p className="text-white text-sm opacity-60">{val.desc}</p>
-        </motion.div>
-      ))}
-    </div>
-  </section>
-);
+          {missionText}
+        </motion.p>
+      </motion.div>
+
+      <div className="grid grid-cols-2 gap-6">
+        {[
+          { title: "Integrity", desc: "Honest, clear practices." },
+          { title: "Innovation", desc: "Leading tech trends." },
+          { title: "Excellence", desc: "Highest standards." },
+          { title: "Client-First", desc: "Tailored solutions." }
+        ].map((val, i) => (
+          <motion.div 
+            key={i} 
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            transition={{ delay: i * 0.1 }}
+            className="p-8 bg-transparent border border-white/10 rounded-3xl backdrop-blur-xl group hover:border-accent/40 transition-all"
+          >
+            <h4 className="text-accent font-bold mb-2 uppercase text-xs tracking-widest">{val.title}</h4>
+            <p className="text-white text-sm opacity-60 group-hover:opacity-100 transition-opacity">{val.desc}</p>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+};
 
 // --- CEO SECTION ---
 export const CEOSection: React.FC = () => (

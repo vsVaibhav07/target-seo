@@ -341,11 +341,11 @@ export default function CaseStudiesPage() {
             <motion.span
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              className="text-orange-500 font-mono text-xs font-bold uppercase tracking-[0.4em] mb-4 block"
+              className="text-accent font-mono text-xs font-bold uppercase tracking-[0.4em] mb-4 block"
             >
               The Execution DNA
             </motion.span>
-            <h2 className="text-5xl md:text-8xl font-black uppercase text-white leading-none mb-8">
+            <h2 className="text-5xl md:text-7xl font-dancing font-black uppercase text-white leading-none mb-8">
               Our{" "}
               <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
                 Methodology.
