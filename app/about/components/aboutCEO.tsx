@@ -2,7 +2,8 @@
 import { m } from "framer-motion";
 import { Linkedin, Mail, Target, Award } from "lucide-react";
 import Image from "next/image";
-import AnimatedHeading from "@/app/components/common/animatedHeading";
+
+import SectionTitle from "@/app/components/common/sectionTitle";
 
 export default function CEOSection() {
   return (
@@ -29,8 +30,8 @@ export default function CEOSection() {
 
         <div className="w-full lg:w-3/5 space-y-8">
           <div className="space-y-2">
-            <AnimatedHeading text="AVADHESH" className="text-5xl md:text-7xl font-black font-dancing text-white" />
-            <AnimatedHeading text="KUMAR SINGH" className="text-5xl md:text-7xl font-black font-dancing text-accent" />
+           
+             <SectionTitle className='  bg-[radial-gradient(circle_at_30%_30%,rgba(249,115,22,0.1),transparent_50%)]  ' text='AVADHESH KUMAR SINGH' />
             <p className="text-accent font-mono mt-4 uppercase tracking-[0.4em] text-sm font-bold">Founder & CEO</p>
           </div>
 

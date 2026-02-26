@@ -15,8 +15,8 @@ export default function AboutPage() {
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
+      orientation: "vertical",
+      gestureOrientation: "vertical",
       smoothWheel: true,
     });
 
@@ -30,14 +30,14 @@ export default function AboutPage() {
 
   return (
     <LazyMotion features={domMax}>
-      <main className="relative cursor-none bg-[#020617] text-white selection:bg-orange-500 overflow-x-hidden">
+      <main className="relative cursor-none bg-[#020617] text-white selection:bg-accent overflow-x-hidden">
         <CustomCursor />
         {/* Fixed Background Layer */}
         <div className="fixed inset-0 z-0">
-           <DotBackground />
-           {/* Moving Decorative SVG Blurs */}
-           <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-orange-600/10 blur-[120px] rounded-full animate-pulse" />
-           <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-blue-600/10 blur-[120px] rounded-full animate-bounce duration-[10s]" />
+          <DotBackground />
+          {/* Moving Decorative SVG Blurs */}
+          <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-orange-600/10 blur-[120px] rounded-full animate-pulse" />
+          <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-blue-600/10 blur-[120px] rounded-full animate-bounce duration-[10s]" />
         </div>
 
         {/* Content Layer */}
@@ -46,7 +46,7 @@ export default function AboutPage() {
           <AboutUs />
           <CEOSection />
           <WhyChooseUs />
-    <CTASection/>
+          <CTASection />
         </div>
       </main>
     </LazyMotion>

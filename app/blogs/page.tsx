@@ -43,10 +43,12 @@ export default function BlogsPage() {
           </m.div>
 
           <div className="flex flex-col items-center justify-center">
+            
             <AnimatedHeading 
               text=" BLOGS " 
               className="text-6xl md:text-8xl font-black uppercase font-dancing text-white" 
             />
+            
             <AnimatedHeading 
               text="INSIGHTS." 
               className="text-6xl md:text-8xl font-black uppercase italic font-serif text-accent bg-clip-text bg-gradient-to-r from-accent to-accent/40" 
