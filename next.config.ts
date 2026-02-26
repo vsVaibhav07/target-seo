@@ -13,10 +13,15 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
      
+      {
+        protocol: 'https',
+        hostname: 'www.rebrandsolution.com',
+        pathname: '/**',
+      },
     ],
   },
   experimental: {
-    // Ye line icons ko automatically optimize kar degi
+  
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   }
 };

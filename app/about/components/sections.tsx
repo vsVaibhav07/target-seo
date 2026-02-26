@@ -31,7 +31,7 @@ export const AboutHero: React.FC = () => (
       transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
       className="max-w-6xl relative z-10"
     >
-      <span className="text-orange-500 font-mono tracking-[0.8em] uppercase text-[10px] md:text-xs mb-8 block font-bold">
+      <span className="text-accent font-mono tracking-[0.8em] uppercase text-[10px] md:text-xs mb-8 block font-bold">
         Crafting Search Ecosystems
       </span>
       
@@ -50,7 +50,7 @@ export const AboutHero: React.FC = () => (
         <p className="text-slate-400 text-lg md:text-xl max-w-xl text-center md:text-left font-light leading-relaxed">
           At <span className="text-white font-medium">Target SEO Solutions</span>, we transform organic search into your most aggressive revenue channel. 
         </p>
-        <div className="h-20 w-[1px] bg-orange-600/50 hidden md:block" />
+        <div className="h-20 w-[1px] bg-accent/50 hidden md:block" />
         <div className="flex flex-col items-start text-left">
           <span className="text-white font-bold text-4xl">16+</span>
           <span className="text-slate-500 text-[10px] uppercase tracking-widest font-black">Years Expertise</span>
@@ -64,7 +64,7 @@ export const AboutHero: React.FC = () => (
       transition={{ duration: 2, repeat: Infinity }}
       className="absolute bottom-10 left-1/2 -translate-x-1/2"
     >
-      <div className="w-[1px] h-16 bg-gradient-to-b from-orange-500 to-transparent" />
+      <div className="w-[1px] h-16 bg-gradient-to-b from-accent to-transparent" />
     </motion.div>
   </section>
 );
@@ -79,8 +79,8 @@ export const MissionValues: React.FC = () => (
       variants={fadeUp} 
       className="space-y-8"
     >
-      <h2 className="text-5xl font-bold text-white uppercase">Our Mission</h2>
-      <p className="text-slate-400 text-lg leading-relaxed border-l-2 border-orange-500 pl-8">
+      <h2 className="text-5xl font-black font-dancing text-white uppercase">Our Mission</h2>
+      <p className="text-slate-400 text-lg leading-relaxed border-l-2 border-accent pl-8">
         Our mission is to deliver real results for businesses of all sizes... every brand should have the chance to be seen, heard, and trusted online.
       </p>
     </motion.div>
@@ -100,7 +100,7 @@ export const MissionValues: React.FC = () => (
           transition={{ delay: i * 0.1 }}
           className="p-8 bg-transparent border border-white/10 rounded-3xl backdrop-blur-xl"
         >
-          <h4 className="text-orange-500 font-bold mb-2 uppercase text-xs tracking-widest">{val.title}</h4>
+          <h4 className="text-accent font-bold mb-2 uppercase text-xs tracking-widest">{val.title}</h4>
           <p className="text-white text-sm opacity-60">{val.desc}</p>
         </motion.div>
       ))}
@@ -122,7 +122,7 @@ export const CEOSection: React.FC = () => (
               sizes="(max-width: 768px) 100vw, 33vw"
             />
         </div>
-        <div className="absolute -bottom-6 -right-6 bg-orange-600 p-8 rounded-2xl shadow-2xl z-20">
+        <div className="absolute -bottom-6 -right-6 bg-accent p-8 rounded-2xl shadow-2xl z-20">
             <h3 className="text-white font-bold text-xl">16+ Years</h3>
             <p className="text-white/80 text-xs uppercase tracking-widest">Experience</p>
         </div>
@@ -134,15 +134,15 @@ export const CEOSection: React.FC = () => (
           viewport={{ once: true }}
           variants={fadeUp}
         >
-          <h2 className="text-4xl md:text-6xl font-black text-white uppercase leading-none">Avadhesh Kumar Singh</h2>
-          <p className="text-orange-500 font-mono mt-2">Founder & CEO, Target SEO Solutions</p>
+          <h2 className="text-4xl md:text-6xl font-black font-serif text-white uppercase leading-none">Avadhesh Kumar Singh</h2>
+          <p className="text-accent font-mono mt-2">Founder & CEO, Target SEO Solutions</p>
         </motion.div>
         <p className="text-slate-300 text-lg italic leading-relaxed">
           "I started Target SEO Solutions with one mission—to help businesses grow online with strategies that are clear, ethical, and results-focused."
         </p>
         <div className="flex gap-4">
-          <a href="#" className="p-4 bg-white/10 rounded-full hover:bg-orange-600 transition-all text-white"><Linkedin size={24} /></a>
-          <a href="mailto:avadhesh@targetseosolutions.com" className="p-4 bg-white/10 rounded-full hover:bg-orange-600 transition-all text-white"><Mail size={24} /></a>
+          <a href="#" className="p-4 bg-white/10 rounded-full hover:bg-accent transition-all text-white"><Linkedin size={24} /></a>
+          <a href="mailto:avadhesh@targetseosolutions.com" className="p-4 bg-white/10 rounded-full hover:bg-accent transition-all text-white"><Mail size={24} /></a>
         </div>
       </div>
     </div>
@@ -153,7 +153,7 @@ export const CEOSection: React.FC = () => (
 export const WhyChooseUs: React.FC = () => (
   <section className="py-32 container mx-auto px-6 bg-transparent">
     <div className="text-center mb-20">
-      <h2 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">Why Choose Us</h2>
+      <h2 className="text-5xl md:text-7xl font-black font-dancing text-white uppercase tracking-tighter">Why Choose Us</h2>
     </div>
     <div className="grid md:grid-cols-3 gap-8">
       {[
@@ -167,9 +167,9 @@ export const WhyChooseUs: React.FC = () => (
           whileInView="whileInView"
           viewport={{ once: true }}
           variants={fadeUp} 
-          className="p-10 rounded-[3rem] bg-transparent border border-orange-500/10 hover:border-orange-500/40 transition-all"
+          className="p-10 rounded-[3rem] bg-transparent border border-accent/10 hover:border-accent/40 transition-all"
         >
-          <Target className="text-orange-500 w-12 h-12 mb-6" />
+          <Target className="text-accent w-12 h-12 mb-6" />
           <h3 className="text-2xl font-bold text-white mb-4 uppercase">{item.t}</h3>
           <p className="text-slate-400 leading-relaxed">{item.d}</p>
         </motion.div>

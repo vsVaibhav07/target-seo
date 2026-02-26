@@ -68,7 +68,7 @@ export default function Testimonials() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.5 }}
-                className={word === 'Clients' ? 'text-blue-600' : ''}
+                className={word === 'Clients' ? 'text-accent' : ''}
               >
                 {word}
               </m.span>
@@ -110,7 +110,7 @@ export default function Testimonials() {
                 className="w-full flex flex-col items-center group"
               >
                 {/* BLUE DESIGNED CARD */}
-                <div className="relative w-full aspect-[4/3] bg-gradient-to-br from-[#0f172a] to-blue-900 rounded-[3rem] p-8 md:p-10 shadow-2xl shadow-blue-200 flex flex-col justify-center items-center text-center overflow-hidden mb-8">
+                <div className="relative w-full bg-gradient-to-br from-[#0f172a] to-blue-900 rounded-[3rem] p-8 md:p-10 shadow-2xl shadow-blue-200 flex flex-col justify-center items-center text-center overflow-hidden mb-8">
                   {/* Decorative Elements */}
                   <div className="absolute top-[-10%] right-[-10%] w-32 h-32 bg-white/10 rounded-full blur-2xl" />
                   <Quote className="absolute top-6 left-8 text-white/10" size={60} />
